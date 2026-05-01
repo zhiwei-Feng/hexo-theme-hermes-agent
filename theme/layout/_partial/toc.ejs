@@ -1,6 +1,4 @@
 <div class="toc" data-toc>
   <div class="toc__label">── <%= __('post.contents') %> ──</div>
-  <% if (toc) { %>
-    <%- toc %>
-  <% } %>
+  <%- toc(page.content, { list_number: false }) %>
 </div>

@@ -15,7 +15,7 @@
 
     <% if (page.toc !== false) { %>
       <aside class="post__toc">
-        <%- partial('_partial/toc', { toc: toc(page.content, { list_number: false }) }) %>
+        <%- partial('_partial/toc') %>
       </aside>
     <% } %>
   </div>
