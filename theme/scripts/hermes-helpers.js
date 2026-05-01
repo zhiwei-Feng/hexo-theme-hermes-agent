@@ -37,16 +37,34 @@ hexo.extend.helper.register('post_meta_line', function (post) {
   return `$ cat posts/${slug}.md`;
 });
 
-// Post content filter: wrap <pre> with COPY button
+// Post content filter: replace code blocks with our styled .code-block wrapper.
+// Handles two input shapes:
+//   1. Hexo default: <figure class="highlight LANG">...<td class="code"><pre>...</pre></td>...</figure>
+//      (including a .gutter <td> with line numbers, which is discarded — nobody wants to copy line numbers)
+//   2. Plain <pre>...</pre> (highlight.wrap: false, external highlighter, or fenced blocks through marked)
+function wrapBlock(inner, lang) {
+  const label = (lang || '').trim().split(/\s+/)[0].replace(/^language-/, '').toUpperCase();
+  return `<div class="code-block"><div class="code-block__bar"><span class="code-block__lang">${label}</span><button class="code-block__copy" data-code-copy>COPY</button></div><pre data-wrapped>${inner}</pre></div>`;
+}
+
 hexo.extend.filter.register('after_render:html', function (html, data) {
   if (!data || !data.path || !data.path.endsWith('.html')) return html;
-  return html.replace(
-    /<pre([^>]*)>([\s\S]*?)<\/pre>/g,
-    (match, attrs, inner) => {
-      // Detect language from class="language-xxx" on child <code>
+
+  // Case 1 — figure-wrapped Hexo highlight output. Grabs the <pre> from the code column
+  // and drops the entire figure+table (so the gutter column goes with it).
+  html = html.replace(
+    /<figure class="highlight(?:\s+([^"]*))?"[^>]*>[\s\S]*?<td class="code"><pre[^>]*>([\s\S]*?)<\/pre><\/td>[\s\S]*?<\/figure>/g,
+    (_m, lang, inner) => wrapBlock(inner, lang)
+  );
+
+  // Case 2 — any remaining plain <pre> (not already wrapped by case 1).
+  html = html.replace(
+    /<pre((?:(?!data-wrapped)[^>])*)>([\s\S]*?)<\/pre>/g,
+    (_m, attrs, inner) => {
       const langMatch = inner.match(/class="[^"]*language-(\w+)/);
-      const lang = langMatch ? langMatch[1].toUpperCase() : '';
-      return `<div class="code-block"><div class="code-block__bar"><span class="code-block__lang">${lang}</span><button class="code-block__copy" data-code-copy>COPY</button></div><pre${attrs}>${inner}</pre></div>`;
+      return wrapBlock(inner, langMatch ? langMatch[1] : '');
     }
   );
+
+  return html;
 });

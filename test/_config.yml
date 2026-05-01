@@ -31,6 +31,13 @@ pagination_dir: page
 
 theme: hermes-agent
 
+# Code block rendering: the theme's filter re-wraps <pre> with a .code-block
+# container and a COPY button, so the gutter column is redundant. Turning off
+# line_number here also skips generating the markup Hexo would otherwise emit
+# just for the filter to throw away.
+highlight:
+  line_number: false
+
 # Search index generation
 search:
   path: search.json
