@@ -89,3 +89,32 @@
   letter-spacing: var(--track-meta);
 }
 .post__prompt { color: var(--foreground); }
+
+.toc { line-height: 1.9; }
+.toc__label {
+  color: var(--foreground);
+  border-bottom: 1px dashed var(--line);
+  padding-bottom: var(--s-2);
+  margin-bottom: var(--s-3);
+}
+.toc ol, .toc ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+.toc li { padding-left: var(--s-3); }
+.toc li li { padding-left: var(--s-5); }
+.toc a {
+  display: block;
+  text-decoration: none;
+  color: var(--midground);
+  padding: 2px 0 2px var(--s-2);
+  border-left: 2px solid transparent;
+  transition: color 200ms, border-color 200ms;
+}
+.toc a:hover { color: var(--foreground); }
+.toc a.is-read { color: var(--foreground-dim); }
+.toc a.is-active {
+  color: var(--foreground);
+  border-left-color: var(--foreground);
+}

@@ -1,1 +1,6 @@
-<\!-- toc.ejs stub -->
+<div class="toc" data-toc>
+  <div class="toc__label">── <%= __('post.contents') %> ──</div>
+  <% if (toc) { %>
+    <%- toc %>
+  <% } %>
+</div>
