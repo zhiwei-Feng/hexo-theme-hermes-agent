@@ -1,0 +1,89 @@
+.search-modal {
+  width: min(60vw, 720px);
+  max-width: 92vw;
+  padding: 0;
+  background: var(--surface);
+  color: var(--foreground);
+  border: 1px solid var(--line);
+  box-shadow:
+    inset -1px -1px 0 0 rgba(0,0,0,0.5),
+    inset  1px  1px 0 0 rgba(255,255,255,0.16),
+    0 40px 80px rgba(0,0,0,0.5);
+}
+.search-modal::backdrop {
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(2px);
+}
+
+.search-modal__form {
+  display: flex;
+  align-items: center;
+  padding: var(--s-4) var(--s-5);
+  border-bottom: 1px solid var(--line);
+  font-family: var(--font-mono);
+  gap: var(--s-2);
+}
+.search-modal__prompt { color: var(--foreground-dim); }
+.search-modal__input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  color: var(--foreground);
+  font-family: var(--font-mono);
+  font-size: var(--text-body);
+  outline: none;
+  padding: 0;
+}
+.search-modal__cursor { vertical-align: -2px; }
+.search-modal__close {
+  font-family: var(--font-mono);
+  font-size: var(--text-meta);
+  letter-spacing: var(--track-meta);
+  color: var(--foreground-dim);
+  background: transparent;
+  border: 1px solid var(--line);
+  padding: 2px 8px;
+  text-transform: uppercase;
+}
+
+.search-modal__results {
+  max-height: 60vh;
+  overflow-y: auto;
+}
+.search-modal__item {
+  display: block;
+  padding: var(--s-4) var(--s-5);
+  border-bottom: 1px dashed var(--line);
+  text-decoration: none;
+  color: var(--foreground);
+}
+.search-modal__item.is-active { background: rgba(240, 224, 192, 0.05); }
+.search-modal__title {
+  font-family: var(--font-display);
+  font-size: var(--text-body);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: var(--s-1);
+}
+.search-modal__snippet {
+  font-family: var(--font-mono);
+  font-size: var(--text-meta);
+  color: var(--foreground-dim);
+  line-height: 1.6;
+}
+.search-modal mark {
+  background: transparent;
+  color: var(--foreground);
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+}
+.search-modal__empty {
+  padding: var(--s-6) var(--s-5);
+  font-family: var(--font-mono);
+  font-size: var(--text-meta);
+  color: var(--foreground-dim);
+  text-align: center;
+  letter-spacing: var(--track-meta);
+  text-transform: uppercase;
+}
