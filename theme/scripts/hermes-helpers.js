@@ -47,6 +47,40 @@ function wrapBlock(inner, lang) {
   return `<div class="code-block"><div class="code-block__bar"><span class="code-block__lang">${label}</span><button class="code-block__copy" data-code-copy>COPY</button></div><pre data-wrapped>${inner}</pre></div>`;
 }
 
+// Protect $$...$$ display math and $...$ inline math from the markdown renderer
+// (which otherwise inserts <br> on single newlines inside a $$-block and HTML-escapes
+// punctuation, both of which break client-side KaTeX auto-render). We swap math for
+// opaque placeholders before render and restore the raw delimiters after, so KaTeX
+// sees intact $...$ / $$...$$ text nodes in the DOM.
+const MATH_STORE = Symbol('hermes.mathPlaceholders');
+
+hexo.extend.filter.register('before_post_render', function (data) {
+  if (!data.math) return data;
+  const store = [];
+  let counter = 0;
+  data.content = data.content.replace(/\$\$([\s\S]+?)\$\$/g, (_, body) => {
+    const key = `HERMESKATEXDISP${counter++}HERMESKATEX`;
+    store.push([key, `$$${body}$$`]);
+    return key;
+  });
+  data.content = data.content.replace(/(?<!\\)\$([^$\n]+?)\$/g, (_, body) => {
+    const key = `HERMESKATEXINL${counter++}HERMESKATEX`;
+    store.push([key, `$${body}$`]);
+    return key;
+  });
+  data[MATH_STORE] = store;
+  return data;
+});
+
+hexo.extend.filter.register('after_post_render', function (data) {
+  const store = data[MATH_STORE];
+  if (!store) return data;
+  for (const [key, val] of store) {
+    data.content = data.content.split(key).join(val);
+  }
+  return data;
+});
+
 hexo.extend.filter.register('after_render:html', function (html, data) {
   if (!data || !data.path || !data.path.endsWith('.html')) return html;
 
