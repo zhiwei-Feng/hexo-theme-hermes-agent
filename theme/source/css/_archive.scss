@@ -56,3 +56,26 @@
   text-transform: uppercase;
   text-align: center;
 }
+
+.tag-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-2);
+  padding: var(--s-4) 0;
+}
+.tag-chip {
+  font-family: var(--font-mono);
+  font-size: var(--text-meta);
+  letter-spacing: var(--track-meta);
+  text-transform: uppercase;
+  color: var(--foreground);
+  text-decoration: none;
+  padding: var(--s-2) var(--s-3);
+  border: 1px solid var(--line);
+  background: var(--surface);
+  transition: background 200ms, color 200ms;
+}
+.tag-chip:hover {
+  background: var(--foreground-dim);
+  color: var(--background);
+}

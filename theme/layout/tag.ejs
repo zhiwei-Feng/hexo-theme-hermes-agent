@@ -1,0 +1,24 @@
+<section class="archive">
+  <% const isIndex = !page.tag; %>
+
+  <% if (isIndex) { %>
+    <h2 class="archive__year"><%= __('nav.tags') %></h2>
+    <div class="tag-cloud">
+      <% site.tags.sort('-length').each(function(t) { %>
+        <a class="tag-chip" href="<%- url_for(t.path) %>">
+          <%= t.name.toUpperCase() %>(<%= t.length %>)
+        </a>
+      <% }); %>
+    </div>
+  <% } else { %>
+    <h2 class="archive__year"><%= page.tag.toUpperCase() %> · <%= __('archive.year_posts').replace('{n}', page.posts.length) %></h2>
+    <ul class="archive__list">
+      <% page.posts.each(function(p) { %>
+        <li class="archive__item">
+          <span class="archive__date"><%= format_date_ymd(p.date) %></span>
+          <a class="archive__title" href="<%- url_for(p.path) %>"><%= p.title %></a>
+        </li>
+      <% }); %>
+    </ul>
+  <% } %>
+</section>
