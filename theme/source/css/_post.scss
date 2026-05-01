@@ -1,0 +1,91 @@
+.post {
+  padding: var(--s-8) 0;
+}
+
+.post-meta {
+  font-family: var(--font-mono);
+  font-size: var(--text-meta);
+  margin-bottom: var(--s-8);
+}
+.post-meta__cmd {
+  color: var(--foreground);
+  margin-bottom: var(--s-2);
+}
+.post-meta__prompt { color: var(--foreground-dim); margin-right: 4px; }
+.post-meta__stats {
+  color: var(--foreground-dim);
+  letter-spacing: var(--track-meta);
+  text-transform: uppercase;
+}
+
+.post__title {
+  font-family: var(--font-display);
+  font-size: var(--text-hero);
+  line-height: 1.05;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin: 0 0 var(--s-2);
+  font-weight: 400;
+}
+
+.post__subtitle {
+  font-family: var(--font-mono);
+  font-size: var(--text-meta);
+  letter-spacing: var(--track-meta);
+  color: var(--foreground-dim);
+  margin: 0 0 var(--s-8);
+  text-transform: none;
+}
+
+.post__layout {
+  display: grid;
+  grid-template-columns: 1fr var(--toc-width);
+  gap: var(--s-8);
+  border-top: 1px solid var(--line);
+  padding-top: var(--s-6);
+}
+
+.post__toc {
+  position: sticky;
+  top: var(--s-4);
+  align-self: start;
+  font-family: var(--font-mono);
+  font-size: var(--text-meta);
+  letter-spacing: var(--track-meta);
+}
+
+.post__footer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--s-4);
+  margin-top: var(--s-10);
+  border-top: 1px dashed var(--line);
+  padding-top: var(--s-6);
+}
+
+.post__nav {
+  background: var(--surface);
+  padding: var(--s-4) var(--s-5);
+  border: 1px solid var(--line);
+  text-decoration: none;
+  font-family: var(--font-mono);
+  font-size: var(--text-meta);
+  letter-spacing: var(--track-meta);
+  text-transform: uppercase;
+  color: var(--foreground);
+}
+.post__nav--next { text-align: right; }
+.post__nav-label {
+  color: var(--foreground-dim);
+  margin-bottom: var(--s-1);
+}
+.post__nav-title { font-family: var(--font-display); font-size: var(--text-body); text-transform: uppercase; }
+
+.post__eof {
+  margin-top: var(--s-8);
+  font-family: var(--font-mono);
+  font-size: var(--text-meta);
+  color: var(--foreground-dim);
+  letter-spacing: var(--track-meta);
+}
+.post__prompt { color: var(--foreground); }

@@ -1,0 +1,44 @@
+<article class="post">
+
+  <%- partial('_partial/post-meta', { page: page }) %>
+
+  <h1 class="post__title"><%= page.title %></h1>
+
+  <% if (page.description) { %>
+    <p class="post__subtitle">— <%= page.description %></p>
+  <% } %>
+
+  <div class="post__layout">
+    <div class="post-content">
+      <%- page.content %>
+    </div>
+
+    <% if (page.toc !== false) { %>
+      <aside class="post__toc">
+        <%- partial('_partial/toc', { toc: toc(page.content, { list_number: false }) }) %>
+      </aside>
+    <% } %>
+  </div>
+
+  <footer class="post__footer">
+    <% if (page.prev) { %>
+      <a class="post__nav post__nav--prev bevel" href="<%- url_for(page.prev.path) %>">
+        <div class="post__nav-label"><%= __('post.prev') %> ←</div>
+        <div class="post__nav-title"><%= page.prev.title %></div>
+      </a>
+    <% } else { %>
+      <div></div>
+    <% } %>
+
+    <% if (page.next) { %>
+      <a class="post__nav post__nav--next bevel" href="<%- url_for(page.next.path) %>">
+        <div class="post__nav-label">→ <%= __('post.next') %></div>
+        <div class="post__nav-title"><%= page.next.title %></div>
+      </a>
+    <% } %>
+  </footer>
+
+  <div class="post__eof">
+    <span class="post__prompt">$</span> <%= __('post.end_of_file') %><span class="cursor"></span>
+  </div>
+</article>
