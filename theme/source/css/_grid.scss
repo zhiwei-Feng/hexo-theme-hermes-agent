@@ -1,0 +1,40 @@
+// Grid frame: borders separate cells like a newspaper layout.
+.g {
+  display: grid;
+  gap: 0;
+  border: 1px solid var(--line);
+}
+
+.gc {
+  padding: var(--s-4) var(--s-5);
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  &:last-child { border-right: none; }
+}
+
+// Remove outer doubled borders using negative margins on children
+.g > .gc:nth-last-child(-n+2):nth-child(even) ~ .gc,
+.g > .gc:nth-last-child(1) {
+  border-bottom: none;
+}
+
+// Horizontal strip (single-row grids — nav, meta bars)
+.g-row {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(0, 1fr);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.g-row > * {
+  padding: var(--s-3) var(--s-4);
+  border-right: 1px solid var(--line);
+  &:last-child { border-right: none; }
+}
+
+// Content container
+.container {
+  max-width: var(--content-max);
+  margin: 0 auto;
+  padding: 0 var(--s-4);
+}
