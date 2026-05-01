@@ -1,22 +1,27 @@
-// Tablet: <=1199
-@media (max-width: 1199px) {
+// Wide desktop: generous comfort margin, full 1360 container + TOC
+// (default state, no media query needed)
+
+// Tablet-desktop: container at 1200+ but drop the TOC to a stacked position
+// because the content column gets cramped below 1280.
+@media (max-width: 1279px) {
   :root { --toc-width: 0px; }
-  .post__layout { grid-template-columns: 1fr; }
+  .post__layout { grid-template-columns: minmax(0, 1fr); }
   .post__toc {
     position: static;
     margin-bottom: var(--s-6);
     max-width: 100%;
   }
+}
 
+// Tablet: two-column home grid, compact nav
+@media (max-width: 1199px) {
   .home__grid { grid-template-columns: repeat(2, 1fr); }
-
   .site-nav { grid-template-columns: 160px 1fr auto; }
 }
 
 // Mobile: <=767
 @media (max-width: 767px) {
   :root {
-    --content-max: 100%;
     --text-hero: 2rem;
     --text-title: 1.25rem;
   }
@@ -44,6 +49,36 @@
   }
 
   .about__grid { grid-template-columns: 1fr; }
+
+  // Prevent code blocks and long prose from forcing horizontal page scroll
+  .post-content {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+  .post-content pre,
+  .code-block pre,
+  .code-block {
+    max-width: 100%;
+    overflow-x: auto;
+  }
+  .post-content table {
+    display: block;
+    overflow-x: auto;
+    max-width: 100%;
+  }
+
+  // Footer stacks on mobile
+  .site-footer {
+    grid-auto-flow: row;
+    grid-auto-columns: 1fr;
+  }
+  .site-footer > * {
+    border-right: none;
+    border-bottom: 1px solid var(--line);
+  }
+  .site-footer > *:last-child { border-bottom: none; }
+  .site-footer__center { text-align: left; }
+  .site-footer__links { text-align: left; }
 }
 
 // Narrow labels — tighten tracking

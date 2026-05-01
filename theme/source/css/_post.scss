@@ -39,10 +39,16 @@
 
 .post__layout {
   display: grid;
-  grid-template-columns: 1fr var(--toc-width);
+  grid-template-columns: minmax(0, 1fr) var(--toc-width);
   gap: var(--s-8);
   border-top: 1px solid var(--line);
   padding-top: var(--s-6);
+}
+.post__layout > * { min-width: 0; }
+
+.post__title {
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .post__toc {
