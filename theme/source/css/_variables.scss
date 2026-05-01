@@ -1,0 +1,44 @@
+// Color tokens — authored in dark-mode values.
+// Light mode is achieved by html.light { filter: invert(1); }.
+:root {
+  --background: #041c1b;
+  --surface: #11332f;
+  --background-deep: #000203;
+  --line: #1a3834;
+  --foreground: #f0e0c0;
+  --foreground-dim: #b0a090;
+  --midground: #384038;
+  --accent: #fb2c36;
+
+  // Typography
+  --font-display: "Young Serif", Georgia, serif;
+  --font-sans-narrow: "Archivo Narrow", system-ui, sans-serif;
+  --font-sans: "Archivo", system-ui, sans-serif;
+  --font-mono: "Courier Prime", ui-monospace, Menlo, monospace;
+
+  --text-hero: 2.625rem;
+  --text-title: 1.5rem;
+  --text-h2: 1rem;
+  --text-h3: 0.9375rem;
+  --text-body: 1rem;
+  --text-ui: 0.9375rem;
+  --text-meta: 0.75rem;
+
+  --track-ui: 0.1875rem;
+  --track-meta: 0.125rem;
+
+  // Spacing
+  --s-1: 0.25rem;
+  --s-2: 0.5rem;
+  --s-3: 0.75rem;
+  --s-4: 1rem;
+  --s-5: 1.25rem;
+  --s-6: 1.5rem;
+  --s-8: 2rem;
+  --s-10: 2.5rem;
+  --s-12: 3rem;
+
+  // Layout
+  --content-max: 1200px;
+  --toc-width: 220px;
+}
