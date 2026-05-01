@@ -1,6 +1,12 @@
 # hexo-theme-hermes-agent
 
+[![CI](https://github.com/zhiwei-Feng/hexo-theme-hermes-agent/actions/workflows/ci.yml/badge.svg)](https://github.com/zhiwei-Feng/hexo-theme-hermes-agent/actions/workflows/ci.yml)
+[![Pages](https://github.com/zhiwei-Feng/hexo-theme-hermes-agent/actions/workflows/pages.yml/badge.svg)](https://zhiwei-feng.github.io/hexo-theme-hermes-agent/)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+
 A Hexo theme that brings the Nous Research Hermes Agent terminal aesthetic to static blogs.
+
+**Live demo** → https://zhiwei-feng.github.io/hexo-theme-hermes-agent/
 
 ## Screenshots
 
