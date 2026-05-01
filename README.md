@@ -4,8 +4,6 @@ A Hexo theme that brings the Nous Research Hermes Agent terminal aesthetic to st
 
 ## Screenshots
 
-_Screenshots will be added in a follow-up commit._
-
 ![Dark mode](docs/screenshot-dark.png)
 ![Light mode](docs/screenshot-light.png)
 
@@ -27,7 +25,7 @@ _Screenshots will be added in a follow-up commit._
 
 ```bash
 cd your-hexo-blog
-git clone https://github.com/adrianfeng/hexo-theme-hermes-agent themes/hermes-agent
+git clone https://github.com/zhiwei-Feng/hexo-theme-hermes-agent themes/hermes-agent
 npm install hexo-renderer-ejs hexo-renderer-sass-next hexo-generator-search
 ```
 
