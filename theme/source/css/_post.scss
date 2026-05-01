@@ -122,6 +122,34 @@
   border-left-color: var(--foreground);
 }
 
+// Mobile TOC floating panel — FAB + scrim (hidden by default, shown at <=767)
+.toc-fab {
+  display: none;
+  position: fixed;
+  right: var(--s-4);
+  bottom: var(--s-4);
+  z-index: 50;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  color: var(--foreground);
+  font-family: var(--font-mono);
+  font-size: var(--text-ui);
+  letter-spacing: var(--track-ui);
+  text-transform: uppercase;
+  padding: var(--s-3) var(--s-4);
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+}
+.toc-fab:hover { background: var(--line); }
+.toc-scrim {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  z-index: 48;
+}
+.toc-scrim.is-open { display: block; }
+
 .about {
   padding: var(--s-8) 0;
 }

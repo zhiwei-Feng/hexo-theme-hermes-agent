@@ -1,4 +1,37 @@
 const toc = document.querySelector('[data-toc]');
+const fab = document.querySelector('[data-toc-fab]');
+const scrim = document.querySelector('[data-toc-scrim]');
+
+if (toc && fab && scrim) {
+  if (!toc.querySelector('a[href]')) {
+    fab.remove();
+    scrim.remove();
+  } else {
+    const close = () => {
+      toc.classList.remove('is-open');
+      scrim.classList.remove('is-open');
+      fab.setAttribute('aria-expanded', 'false');
+      document.body.style.removeProperty('overflow');
+    };
+    const open = () => {
+      toc.classList.add('is-open');
+      scrim.classList.add('is-open');
+      fab.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+    };
+    fab.addEventListener('click', () => {
+      toc.classList.contains('is-open') ? close() : open();
+    });
+    scrim.addEventListener('click', close);
+    toc.addEventListener('click', (e) => {
+      if (e.target.closest('a[href]')) close();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && toc.classList.contains('is-open')) close();
+    });
+  }
+}
+
 if (toc) {
   const links = Array.from(toc.querySelectorAll('a[href^="#"]'));
   const targets = links

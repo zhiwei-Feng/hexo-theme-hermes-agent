@@ -20,6 +20,11 @@
     <% } %>
   </div>
 
+  <% if (page.toc !== false) { %>
+    <button class="toc-fab" type="button" aria-label="<%= __('post.contents') %>" aria-expanded="false" data-toc-fab><%= __('post.contents') %></button>
+    <div class="toc-scrim" data-toc-scrim></div>
+  <% } %>
+
   <footer class="post__footer">
     <% if (page.prev) { %>
       <a class="post__nav post__nav--prev bevel" href="<%- url_for(page.prev.path) %>">

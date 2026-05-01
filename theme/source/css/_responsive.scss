@@ -67,6 +67,23 @@
     max-width: 100%;
   }
 
+  // TOC: become a FAB-triggered floating panel instead of stacking at end of post
+  .toc-fab { display: block; }
+  .post__toc { margin: 0; }
+  [data-toc] {
+    display: none;
+    position: fixed;
+    inset: auto var(--s-4) calc(var(--s-4) + 3.25rem) var(--s-4);
+    max-height: 60vh;
+    overflow: auto;
+    background: var(--background);
+    border: 1px solid var(--line);
+    padding: var(--s-4) var(--s-5);
+    z-index: 49;
+    box-shadow: 0 -8px 30px rgba(0, 0, 0, 0.6);
+  }
+  [data-toc].is-open { display: block; }
+
   // Footer stacks on mobile
   .site-footer {
     grid-auto-flow: row;
