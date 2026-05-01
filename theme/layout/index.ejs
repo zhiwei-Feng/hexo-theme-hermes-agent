@@ -1,0 +1,53 @@
+<section class="home">
+
+  <div class="home__hero">
+    <div class="home__hero-label"><%= config.description || '' %></div>
+    <h1 class="home__hero-title">
+      <% if (theme.site_title) { %><%= theme.site_title %><% } else { %><%= config.title %><% } %>
+    </h1>
+    <p class="home__hero-tagline"><%= theme.tagline || '' %></p>
+  </div>
+
+  <%
+    // Pick featured post
+    const mode = theme.featured_post || 'latest';
+    let featured = null;
+    const posts = site.posts.sort('-date').toArray();
+    if (mode === 'front_matter') {
+      featured = posts.find(function(p) { return p.featured === true; });
+    }
+    if (!featured) featured = posts[0];
+    const rest = posts.filter(function(p) { return p !== featured; }).slice(0, 5);
+  %>
+
+  <% if (featured) { %>
+    <a class="home__featured" href="<%- url_for(featured.path) %>">
+      <div class="home__featured-label">
+        FEATURED
+        <% if (featured.categories && featured.categories.length) { %>
+          · <% featured.categories.each(function(c){ %>[<%= c.name.toUpperCase() %>] <% }) %>
+        <% } %>
+      </div>
+      <h2 class="home__featured-title"><%= featured.title %></h2>
+      <p class="home__featured-excerpt">
+        <%- (featured.description || featured.excerpt || '').toString().slice(0, 200) %>
+      </p>
+      <div class="home__featured-date">
+        <%= format_date_ymd(featured.date) %>
+        · <%= __('post.read_time').replace('{n}', hermes_reading_minutes(featured)) %>
+      </div>
+    </a>
+  <% } %>
+
+  <div class="home__grid">
+    <% rest.forEach(function(p, i) { %>
+      <a class="home__grid-item" href="<%- url_for(p.path) %>">
+        <div class="home__grid-number"><%= String(i + 2).padStart(3, '0') %></div>
+        <div class="home__grid-title"><%= p.title %></div>
+        <div class="home__grid-date"><%= format_date_ymd(p.date) %></div>
+      </a>
+    <% }); %>
+    <a class="home__grid-more" href="<%- url_for('/archives/') %>">MORE →</a>
+  </div>
+
+</section>
