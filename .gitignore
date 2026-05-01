@@ -1,0 +1,9 @@
+node_modules/
+test/node_modules/
+test/public/
+test/db.json
+test/.deploy_git/
+.superpowers/
+.DS_Store
+*.log
+.claude/settings.local.json
