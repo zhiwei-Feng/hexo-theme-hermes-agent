@@ -1,0 +1,14 @@
+html.light {
+  filter: invert(1);
+}
+
+// .no-invert cancels the outer inversion for elements we want to
+// preserve (images, code tokens, KaTeX, inline SVG).
+html.light .no-invert,
+html.light img:not(.do-invert),
+html.light figure:not(.do-invert) img,
+html.light .hljs,
+html.light .katex,
+html.light svg:not(.do-invert) {
+  filter: invert(1);
+}
