@@ -1,0 +1,33 @@
+<section class="archive">
+
+  <%
+    const byYear = {};
+    const allPosts = site.posts.sort('-date').toArray();
+    allPosts.forEach(function(p) {
+      const y = new Date(p.date).getFullYear();
+      (byYear[y] = byYear[y] || []).push(p);
+    });
+    const years = Object.keys(byYear).sort(function(a, b) { return b - a; });
+  %>
+
+  <% years.forEach(function(y) { %>
+    <h2 class="archive__year"><%= y %> · <%= __('archive.year_posts').replace('{n}', byYear[y].length) %></h2>
+    <ul class="archive__list">
+      <% byYear[y].forEach(function(p) { %>
+        <li class="archive__item">
+          <span class="archive__date"><%= format_date_ymd(p.date) %></span>
+          <a class="archive__title" href="<%- url_for(p.path) %>"><%= p.title %></a>
+          <span class="archive__tag">
+            <% if (p.tags && p.tags.length) { %>
+              <% p.tags.each(function(t) { %>[<%= t.name.toUpperCase() %>] <% }); %>
+            <% } %>
+          </span>
+        </li>
+      <% }); %>
+    </ul>
+  <% }); %>
+
+  <div class="archive__total">
+    <%= __('archive.total').replace('{posts}', allPosts.length).replace('{years}', years.length) %>
+  </div>
+</section>
