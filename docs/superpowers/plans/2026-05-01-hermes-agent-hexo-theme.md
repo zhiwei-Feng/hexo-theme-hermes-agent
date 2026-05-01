@@ -4,9 +4,9 @@
 
 **Goal:** Build a Hexo blog theme (`hexo-theme-hermes-agent`) that reproduces the Nous Research Hermes Agent site's visual language (deep-teal + warm-cream phosphor-decay aesthetic, grid-framed panels, terminal meta chrome) adapted for a personal blog with tech/AI/essay content.
 
-**Architecture:** Classic Hexo theme — EJS templates, SCSS via `hexo-renderer-sass`, vanilla ES-module JS. Zero build chain at install time; `hexo generate` produces final static output. The theme ships a `test/` fixture blog so `npm run dev` boots a local server for eyeballing changes. Dark mode is authored; light mode is `html.light { filter: invert(1); }` with `.no-invert` escape hatches.
+**Architecture:** Classic Hexo theme — EJS templates, SCSS via `hexo-renderer-sass-next`, vanilla ES-module JS. Zero build chain at install time; `hexo generate` produces final static output. The theme ships a `test/` fixture blog so `npm run dev` boots a local server for eyeballing changes. Dark mode is authored; light mode is `html.light { filter: invert(1); }` with `.no-invert` escape hatches.
 
-**Tech Stack:** Hexo 7, EJS, SCSS (hexo-renderer-sass), vanilla JS (ES modules), Prism.js for code highlighting (shipped with Hexo), hexo-generator-search for search index, Playwright for visual regression (deferred — see out-of-scope).
+**Tech Stack:** Hexo 7, EJS, SCSS (hexo-renderer-sass-next), vanilla JS (ES modules), Prism.js for code highlighting (shipped with Hexo), hexo-generator-search for search index, Playwright for visual regression (deferred — see out-of-scope).
 
 **Spec:** `docs/superpowers/specs/2026-05-01-hermes-agent-hexo-theme-design.md`
 
@@ -39,7 +39,7 @@ The theme follows Hexo's standard theme layout. Files are kept small and single-
 - `layout/tag.ejs` — single tag or index of all tags
 - `layout/404.ejs` — 404 terminal
 
-**Styles (SCSS, compiled by hexo-renderer-sass):**
+**Styles (SCSS, compiled by hexo-renderer-sass-next):**
 - `source/css/main.scss` — entry, `@use` all partials
 - `source/css/_variables.scss` — color, font, spacing tokens (reads `theme.palette` from Hexo config via EJS — or defines defaults)
 - `source/css/_reset.scss` — minimal reset + `box-sizing`
@@ -157,7 +157,7 @@ A future plan will add Playwright visual regression; for v0.1, human eyeballs ar
   },
   "dependencies": {
     "hexo-renderer-ejs": "^2.0.0",
-    "hexo-renderer-sass": "^0.4.0",
+    "hexo-renderer-sass-next": "^0.1.3",
     "hexo-generator-search": "^2.4.0"
   },
   "scripts": {
@@ -240,7 +240,7 @@ git commit -m "chore: initial scaffolding"
     "hexo-generator-tag": "^2.0.0",
     "hexo-renderer-ejs": "^2.0.0",
     "hexo-renderer-marked": "^6.0.0",
-    "hexo-renderer-sass": "^0.4.0",
+    "hexo-renderer-sass-next": "^0.1.3",
     "hexo-generator-search": "^2.4.0",
     "hexo-server": "^3.0.0"
   }
@@ -3093,7 +3093,7 @@ Include the following sections (write each as real content, not outlines):
    ```bash
    cd your-hexo-blog
    git clone https://github.com/<you>/hexo-theme-hermes-agent themes/hermes-agent
-   npm install hexo-renderer-ejs hexo-renderer-sass hexo-generator-search
+   npm install hexo-renderer-ejs hexo-renderer-sass-next hexo-generator-search
    ```
 
    Then set `theme: hermes-agent` in the site `_config.yml`.
