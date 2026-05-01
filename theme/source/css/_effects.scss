@@ -1,0 +1,84 @@
+// Blink — terminal cursor animation
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+.blink {
+  animation: blink 1s step-end infinite;
+}
+
+// Cursor — inline |_| that blinks
+.cursor {
+  display: inline-block;
+  width: 0.6ch;
+  height: 1em;
+  background: currentColor;
+  margin-left: 2px;
+  vertical-align: baseline;
+  animation: blink 1s step-end infinite;
+}
+
+// Dither — 2px checker noise
+.dither {
+  background-image: repeating-conic-gradient(
+    currentColor 0% 25%,
+    transparent 0% 50%
+  );
+  background-size: 2px 2px;
+}
+
+// Arc-border — animated gradient stroke along edge
+@keyframes arc-stroke {
+  0%   { background-position: 0% 0%; }
+  100% { background-position: 300% 300%; }
+}
+.arc-border {
+  position: relative;
+  isolation: isolate;
+}
+.arc-border::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  padding: 1.25px;
+  border-radius: inherit;
+  background: linear-gradient(
+    160deg,
+    transparent 0%,
+    var(--foreground) 15%,
+    var(--foreground-dim) 20%,
+    var(--background) 25%,
+    transparent 35%,
+    transparent 65%,
+    var(--foreground-dim) 80%,
+    var(--foreground) 100%
+  );
+  background-size: 300% 300%;
+  animation: arc-stroke 2.23s linear infinite;
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  pointer-events: none;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 200ms ease;
+}
+.arc-border:hover::before { opacity: 1; }
+
+// Bevel — inset double shadow for raised panels
+.bevel {
+  box-shadow:
+    inset -1px -1px 0 0 rgba(0, 0, 0, 0.5),
+    inset  1px  1px 0 0 rgba(255, 255, 255, 0.16);
+}
+
+// No-invert — cancels outer html.light filter on images, code, KaTeX
+.no-invert { filter: invert(1); }
+
+// Honor reduced motion
+@media (prefers-reduced-motion: reduce) {
+  .blink, .cursor { animation: none; }
+  .arc-border::before { animation: none; }
+}
