@@ -22,10 +22,10 @@
     "build": "cd test && hexo clean && hexo generate"
   },
   "files": [
-    "_config.yml",
-    "languages/",
-    "layout/",
-    "source/",
-    "scripts/"
+    "theme/_config.yml",
+    "theme/languages/",
+    "theme/layout/",
+    "theme/source/",
+    "theme/scripts/"
   ]
 }

@@ -22,63 +22,63 @@
 The theme follows Hexo's standard theme layout. Files are kept small and single-purpose.
 
 **Templates (EJS):**
-- `layout/layout.ejs` — HTML skeleton: doctype, head include, body, nav, {{ body }}, footer, scripts
-- `layout/_partial/head.ejs` — `<head>` content: meta, OG, fonts, stylesheet, inline theme-flash script
-- `layout/_partial/nav.ejs` — top nav with site title, links, search button, theme toggle
-- `layout/_partial/footer.ejs` — 3-column footer
-- `layout/_partial/post-meta.ejs` — terminal-style `$ cat posts/slug.md` + date/min/words/tags
-- `layout/_partial/toc.ejs` — sticky desktop TOC (falls back to dropdown on mobile)
-- `layout/_partial/pagination.ejs` — prev/next for list pages
-- `layout/_partial/search-modal.ejs` — static markup for `/`-triggered search modal
-- `layout/_partial/theme-toggle.ejs` — ☾ button
-- `layout/index.ejs` — homepage (mini hero + featured + recent grid)
-- `layout/post.ejs` — single post (two-column body + TOC)
-- `layout/page.ejs` — custom pages (dispatches to about layout if front-matter `layout: about`)
-- `layout/archive.ejs` — year-grouped archive list
-- `layout/category.ejs` — single category or index of all categories
-- `layout/tag.ejs` — single tag or index of all tags
-- `layout/404.ejs` — 404 terminal
+- `theme/layout/layout.ejs` — HTML skeleton: doctype, head include, body, nav, {{ body }}, footer, scripts
+- `theme/layout/_partial/head.ejs` — `<head>` content: meta, OG, fonts, stylesheet, inline theme-flash script
+- `theme/layout/_partial/nav.ejs` — top nav with site title, links, search button, theme toggle
+- `theme/layout/_partial/footer.ejs` — 3-column footer
+- `theme/layout/_partial/post-meta.ejs` — terminal-style `$ cat posts/slug.md` + date/min/words/tags
+- `theme/layout/_partial/toc.ejs` — sticky desktop TOC (falls back to dropdown on mobile)
+- `theme/layout/_partial/pagination.ejs` — prev/next for list pages
+- `theme/layout/_partial/search-modal.ejs` — static markup for `/`-triggered search modal
+- `theme/layout/_partial/theme-toggle.ejs` — ☾ button
+- `theme/layout/index.ejs` — homepage (mini hero + featured + recent grid)
+- `theme/layout/post.ejs` — single post (two-column body + TOC)
+- `theme/layout/page.ejs` — custom pages (dispatches to about layout if front-matter `layout: about`)
+- `theme/layout/archive.ejs` — year-grouped archive list
+- `theme/layout/category.ejs` — single category or index of all categories
+- `theme/layout/tag.ejs` — single tag or index of all tags
+- `theme/layout/404.ejs` — 404 terminal
 
 **Styles (SCSS, compiled by hexo-renderer-sass-next):**
-- `source/css/main.scss` — entry, `@use` all partials
-- `source/css/_variables.scss` — color, font, spacing tokens (reads `theme.palette` from Hexo config via EJS — or defines defaults)
-- `source/css/_reset.scss` — minimal reset + `box-sizing`
-- `source/css/_typography.scss` — `@font-face`, base type scale, h1–h6, p, blockquote, inline code
-- `source/css/_grid.scss` — `.g`, `.gc` grid primitives
-- `source/css/_effects.scss` — `.dither`, `.blink`, `.arc-border`, `.bevel`, `.no-invert`
-- `source/css/_nav.scss`
-- `source/css/_post.scss` — post page + TOC + meta
-- `source/css/_code.scss` — pre/code + COPY button, Prism token overrides
-- `source/css/_search.scss` — modal + results
-- `source/css/_archive.scss` — archive, category, tag list styles
-- `source/css/_theme-light.scss` — `html.light { filter: invert(1); }` + `.no-invert` cancellation
-- `source/css/_responsive.scss` — breakpoints
+- `theme/source/css/main.scss` — entry, `@use` all partials
+- `theme/source/css/_variables.scss` — color, font, spacing tokens (reads `theme.palette` from Hexo config via EJS — or defines defaults)
+- `theme/source/css/_reset.scss` — minimal reset + `box-sizing`
+- `theme/source/css/_typography.scss` — `@font-face`, base type scale, h1–h6, p, blockquote, inline code
+- `theme/source/css/_grid.scss` — `.g`, `.gc` grid primitives
+- `theme/source/css/_effects.scss` — `.dither`, `.blink`, `.arc-border`, `.bevel`, `.no-invert`
+- `theme/source/css/_nav.scss`
+- `theme/source/css/_post.scss` — post page + TOC + meta
+- `theme/source/css/_code.scss` — pre/code + COPY button, Prism token overrides
+- `theme/source/css/_search.scss` — modal + results
+- `theme/source/css/_archive.scss` — archive, category, tag list styles
+- `theme/source/css/_theme-light.scss` — `html.light { filter: invert(1); }` + `.no-invert` cancellation
+- `theme/source/css/_responsive.scss` — breakpoints
 
 **Scripts (vanilla ES modules):**
-- `source/js/theme-toggle.js`
-- `source/js/search.js`
-- `source/js/code-copy.js`
-- `source/js/toc-highlight.js`
-- `source/js/keyboard.js` — `/` and navigation chord bindings
+- `theme/source/js/theme-toggle.js`
+- `theme/source/js/search.js`
+- `theme/source/js/code-copy.js`
+- `theme/source/js/toc-highlight.js`
+- `theme/source/js/keyboard.js` — `/` and navigation chord bindings
 
 **Hexo hooks:**
-- `scripts/hermes-helpers.js` — registers helpers: `hermes_reading_minutes()`, `hermes_word_count()`, `format_date_ymd()`, `post_meta_line()`. Also registers `after_render:html` filter to wrap `<pre>` with COPY button markup.
+- `theme/scripts/hermes-helpers.js` — registers helpers: `hermes_reading_minutes()`, `hermes_word_count()`, `format_date_ymd()`, `post_meta_line()`. Also registers `after_render:html` filter to wrap `<pre>` with COPY button markup.
 
-**Fonts (source/fonts/):**
+**Fonts (theme/source/fonts/):**
 - `CourierPrime-Regular.woff2`, `CourierPrime-Bold.woff2` (OFL)
 - `ArchivoNarrow-Regular.woff2`, `Archivo-Regular.woff2`, `Archivo-Bold.woff2` (OFL)
 - `YoungSerif-Regular.woff2` (OFL)
 
 **Static assets:**
-- `source/images/filler-bg.jpg` (tileable low-frequency noise texture, ~30KB)
-- `source/images/og-default.png`
+- `theme/source/images/filler-bg.jpg` (tileable low-frequency noise texture, ~30KB)
+- `theme/source/images/og-default.png`
 
 **Fixture blog:**
 - `test/_config.yml`, `test/package.json`, `test/source/_posts/*.md` (8–10 fixture posts covering all markdown features), `test/source/about/index.md`
 
 **Root:**
-- `_config.yml` — theme's default config (site author's `_config.yml` can override)
-- `languages/default.yml`, `languages/zh-CN.yml`
+- `theme/_config.yml` — theme's default config (site author's `_config.yml` can override)
+- `theme/languages/default.yml`, `theme/languages/zh-CN.yml`
 - `package.json`, `README.md`, `LICENSE`, `.gitignore`
 
 ---
@@ -165,11 +165,11 @@ A future plan will add Playwright visual regression; for v0.1, human eyeballs ar
     "build": "cd test && hexo clean && hexo generate"
   },
   "files": [
-    "_config.yml",
-    "languages/",
-    "layout/",
-    "source/",
-    "scripts/"
+    "theme/_config.yml",
+    "theme/languages/",
+    "theme/layout/",
+    "theme/source/",
+    "theme/scripts/"
   ]
 }
 ```
@@ -290,10 +290,12 @@ theme: hermes-agent
 - [ ] **Step 3: Install fixture deps and create theme symlink**
 
 ```bash
-cd /Users/adrianfeng/coding_workspace/hexo-theme-hermes-agent/test
+cd /Users/adrianfeng/coding_workspace/hexo-theme-hermes-agent
+mkdir -p theme
+cd test
 npm install
 mkdir -p themes
-ln -s ../.. themes/hermes-agent
+ln -s ../../theme themes/hermes-agent
 ```
 
 - [ ] **Step 4: Create `test/source/_posts/hello-world.md`**
@@ -435,11 +437,11 @@ git commit -m "chore: bootstrap fixture blog"
 ## Task 3: Theme `_config.yml` and language files
 
 **Files:**
-- Create: `_config.yml`
-- Create: `languages/default.yml`
-- Create: `languages/zh-CN.yml`
+- Create: `theme/_config.yml`
+- Create: `theme/languages/default.yml`
+- Create: `theme/languages/zh-CN.yml`
 
-- [ ] **Step 1: Create theme `_config.yml`**
+- [ ] **Step 1: Create theme `theme/_config.yml`**
 
 ```yaml
 site_title: ""
@@ -494,7 +496,7 @@ palette:
   accent: "#fb2c36"
 ```
 
-- [ ] **Step 2: Create `languages/default.yml`**
+- [ ] **Step 2: Create `theme/languages/default.yml`**
 
 ```yaml
 nav:
@@ -522,7 +524,7 @@ error:
   not_found_hint: "try /archives/ or /"
 ```
 
-- [ ] **Step 3: Create `languages/zh-CN.yml`**
+- [ ] **Step 3: Create `theme/languages/zh-CN.yml`**
 
 ```yaml
 nav:
@@ -553,7 +555,7 @@ error:
 - [ ] **Step 4: Commit**
 
 ```bash
-git add _config.yml languages/
+git add theme/_config.yml theme/languages/
 git commit -m "feat(config): theme config and language packs"
 ```
 
@@ -562,20 +564,20 @@ git commit -m "feat(config): theme config and language packs"
 ## Task 4: Font downloads and license attribution
 
 **Files:**
-- Create: `source/fonts/CourierPrime-Regular.woff2`
-- Create: `source/fonts/CourierPrime-Bold.woff2`
-- Create: `source/fonts/ArchivoNarrow-Regular.woff2`
-- Create: `source/fonts/Archivo-Regular.woff2`
-- Create: `source/fonts/Archivo-Bold.woff2`
-- Create: `source/fonts/YoungSerif-Regular.woff2`
-- Create: `source/fonts/OFL.txt`
+- Create: `theme/source/fonts/CourierPrime-Regular.woff2`
+- Create: `theme/source/fonts/CourierPrime-Bold.woff2`
+- Create: `theme/source/fonts/ArchivoNarrow-Regular.woff2`
+- Create: `theme/source/fonts/Archivo-Regular.woff2`
+- Create: `theme/source/fonts/Archivo-Bold.woff2`
+- Create: `theme/source/fonts/YoungSerif-Regular.woff2`
+- Create: `theme/source/fonts/OFL.txt`
 
 - [ ] **Step 1: Download fonts**
 
 All fonts are OFL-licensed and can be bundled. Download each as woff2:
 
 ```bash
-cd /Users/adrianfeng/coding_workspace/hexo-theme-hermes-agent/source/fonts
+cd /Users/adrianfeng/coding_workspace/hexo-theme-hermes-agent/theme/source/fonts
 
 # Courier Prime — https://fonts.google.com/specimen/Courier+Prime
 curl -L -o CourierPrime-Regular.woff2 "https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap"
@@ -593,21 +595,21 @@ Pragmatic approach: use `@fontsource` npm packages to retrieve canonical woff2 f
 mkdir /tmp/fonts-stage && cd /tmp/fonts-stage
 npm pack @fontsource/courier-prime @fontsource/archivo @fontsource/archivo-narrow @fontsource/young-serif
 for tgz in *.tgz; do tar xzf "$tgz"; done
-# Copy latin woff2 files (weight 400 / 700) into source/fonts/
+# Copy latin woff2 files (weight 400 / 700) into theme/source/fonts/
 cp package/files/courier-prime-latin-400-normal.woff2 \
-  /Users/adrianfeng/coding_workspace/hexo-theme-hermes-agent/source/fonts/CourierPrime-Regular.woff2
+  /Users/adrianfeng/coding_workspace/hexo-theme-hermes-agent/theme/source/fonts/CourierPrime-Regular.woff2
 # Repeat for Bold, Archivo, ArchivoNarrow, YoungSerif
 ```
 
 - [ ] **Step 2: Verify all six files exist and are non-empty**
 
 ```bash
-ls -lh /Users/adrianfeng/coding_workspace/hexo-theme-hermes-agent/source/fonts/
+ls -lh /Users/adrianfeng/coding_workspace/hexo-theme-hermes-agent/theme/source/fonts/
 ```
 
 Expected: six woff2 files, each 10–60KB. If any file is missing, re-download from Google Fonts or fontsource.
 
-- [ ] **Step 3: Create `source/fonts/OFL.txt`**
+- [ ] **Step 3: Create `theme/source/fonts/OFL.txt`**
 
 Paste the SIL Open Font License 1.1 text (fetchable from `https://openfontlicense.org/open-font-license-official-text/`). Prepend a header:
 
@@ -625,7 +627,7 @@ Full OFL 1.1 text follows:
 - [ ] **Step 4: Commit**
 
 ```bash
-git add source/fonts/
+git add theme/source/fonts/
 git commit -m "feat(fonts): bundle OFL font files"
 ```
 
@@ -634,11 +636,11 @@ git commit -m "feat(fonts): bundle OFL font files"
 ## Task 5: SCSS foundation — variables, reset, main entry
 
 **Files:**
-- Create: `source/css/main.scss`
-- Create: `source/css/_variables.scss`
-- Create: `source/css/_reset.scss`
+- Create: `theme/source/css/main.scss`
+- Create: `theme/source/css/_variables.scss`
+- Create: `theme/source/css/_reset.scss`
 
-- [ ] **Step 1: Create `source/css/_variables.scss`**
+- [ ] **Step 1: Create `theme/source/css/_variables.scss`**
 
 ```scss
 // Color tokens — authored in dark-mode values.
@@ -687,7 +689,7 @@ git commit -m "feat(fonts): bundle OFL font files"
 }
 ```
 
-- [ ] **Step 2: Create `source/css/_reset.scss`**
+- [ ] **Step 2: Create `theme/source/css/_reset.scss`**
 
 ```scss
 *, *::before, *::after { box-sizing: border-box; }
@@ -735,7 +737,7 @@ input, textarea {
 }
 ```
 
-- [ ] **Step 3: Create `source/css/main.scss`**
+- [ ] **Step 3: Create `theme/source/css/main.scss`**
 
 ```scss
 @use "variables";
@@ -755,7 +757,7 @@ input, textarea {
 - [ ] **Step 4: Create stub files for not-yet-written partials**
 
 ```bash
-cd /Users/adrianfeng/coding_workspace/hexo-theme-hermes-agent/source/css
+cd /Users/adrianfeng/coding_workspace/hexo-theme-hermes-agent/theme/source/css
 for p in typography grid effects nav post code search archive theme-light responsive; do
   touch "_${p}.scss"
 done
@@ -764,7 +766,7 @@ done
 - [ ] **Step 5: Commit**
 
 ```bash
-git add source/css/
+git add theme/source/css/
 git commit -m "feat(css): SCSS foundation — variables, reset, entry"
 ```
 
@@ -773,9 +775,9 @@ git commit -m "feat(css): SCSS foundation — variables, reset, entry"
 ## Task 6: Typography
 
 **Files:**
-- Modify: `source/css/_typography.scss`
+- Modify: `theme/source/css/_typography.scss`
 
-- [ ] **Step 1: Write `source/css/_typography.scss`**
+- [ ] **Step 1: Write `theme/source/css/_typography.scss`**
 
 ```scss
 // Font-face declarations
@@ -932,7 +934,7 @@ git commit -m "feat(css): SCSS foundation — variables, reset, entry"
 - [ ] **Step 3: Commit**
 
 ```bash
-git add source/css/_typography.scss
+git add theme/source/css/_typography.scss
 git commit -m "feat(css): typography — @font-face and prose styles"
 ```
 
@@ -941,9 +943,9 @@ git commit -m "feat(css): typography — @font-face and prose styles"
 ## Task 7: Grid primitives
 
 **Files:**
-- Modify: `source/css/_grid.scss`
+- Modify: `theme/source/css/_grid.scss`
 
-- [ ] **Step 1: Write `source/css/_grid.scss`**
+- [ ] **Step 1: Write `theme/source/css/_grid.scss`**
 
 ```scss
 // Grid frame: borders separate cells like a newspaper layout.
@@ -991,7 +993,7 @@ git commit -m "feat(css): typography — @font-face and prose styles"
 - [ ] **Step 2: Commit**
 
 ```bash
-git add source/css/_grid.scss
+git add theme/source/css/_grid.scss
 git commit -m "feat(css): grid primitives (.g, .gc, .g-row, .container)"
 ```
 
@@ -1000,9 +1002,9 @@ git commit -m "feat(css): grid primitives (.g, .gc, .g-row, .container)"
 ## Task 8: Signature effects
 
 **Files:**
-- Modify: `source/css/_effects.scss`
+- Modify: `theme/source/css/_effects.scss`
 
-- [ ] **Step 1: Write `source/css/_effects.scss`**
+- [ ] **Step 1: Write `theme/source/css/_effects.scss`**
 
 ```scss
 // Blink — terminal cursor animation
@@ -1094,7 +1096,7 @@ git commit -m "feat(css): grid primitives (.g, .gc, .g-row, .container)"
 - [ ] **Step 2: Commit**
 
 ```bash
-git add source/css/_effects.scss
+git add theme/source/css/_effects.scss
 git commit -m "feat(css): signature effects — blink, dither, arc-border, bevel"
 ```
 
@@ -1103,10 +1105,10 @@ git commit -m "feat(css): signature effects — blink, dither, arc-border, bevel
 ## Task 9: Layout skeleton
 
 **Files:**
-- Create: `layout/layout.ejs`
-- Create: `layout/_partial/head.ejs`
+- Create: `theme/layout/layout.ejs`
+- Create: `theme/layout/_partial/head.ejs`
 
-- [ ] **Step 1: Write `layout/_partial/head.ejs`**
+- [ ] **Step 1: Write `theme/layout/_partial/head.ejs`**
 
 ```ejs
 <meta charset="UTF-8">
@@ -1156,7 +1158,7 @@ git commit -m "feat(css): signature effects — blink, dither, arc-border, bevel
 <link rel="alternate" type="application/atom+xml" title="<%= config.title %>" href="<%- url_for('/atom.xml') %>">
 ```
 
-- [ ] **Step 2: Write `layout/layout.ejs`**
+- [ ] **Step 2: Write `theme/layout/layout.ejs`**
 
 ```ejs
 <!doctype html>
@@ -1191,7 +1193,7 @@ git commit -m "feat(css): signature effects — blink, dither, arc-border, bevel
 - [ ] **Step 3: Create empty partial stubs (referenced by layout.ejs)**
 
 ```bash
-cd /Users/adrianfeng/coding_workspace/hexo-theme-hermes-agent/layout/_partial
+cd /Users/adrianfeng/coding_workspace/hexo-theme-hermes-agent/theme/layout/_partial
 for p in nav footer search-modal; do
   echo "<!-- ${p}.ejs stub -->" > "${p}.ejs"
 done
@@ -1210,7 +1212,7 @@ Expected: generation succeeds, `public/index.html` contains `<body>...<main clas
 
 ```bash
 cd /Users/adrianfeng/coding_workspace/hexo-theme-hermes-agent
-git add layout/
+git add theme/layout/
 git commit -m "feat(layout): HTML skeleton with head partial and flash-guard"
 ```
 
@@ -1219,17 +1221,17 @@ git commit -m "feat(layout): HTML skeleton with head partial and flash-guard"
 ## Task 10: Navigation
 
 **Files:**
-- Modify: `layout/_partial/nav.ejs`
-- Modify: `source/css/_nav.scss`
-- Create: `layout/_partial/theme-toggle.ejs`
+- Modify: `theme/layout/_partial/nav.ejs`
+- Modify: `theme/source/css/_nav.scss`
+- Create: `theme/layout/_partial/theme-toggle.ejs`
 
-- [ ] **Step 1: Write `layout/_partial/theme-toggle.ejs`**
+- [ ] **Step 1: Write `theme/layout/_partial/theme-toggle.ejs`**
 
 ```ejs
 <button class="theme-toggle" aria-label="Toggle theme" data-theme-toggle>☾</button>
 ```
 
-- [ ] **Step 2: Write `layout/_partial/nav.ejs`**
+- [ ] **Step 2: Write `theme/layout/_partial/nav.ejs`**
 
 ```ejs
 <header class="site-nav">
@@ -1258,7 +1260,7 @@ git commit -m "feat(layout): HTML skeleton with head partial and flash-guard"
 </header>
 ```
 
-- [ ] **Step 3: Write `source/css/_nav.scss`**
+- [ ] **Step 3: Write `theme/source/css/_nav.scss`**
 
 ```scss
 .site-nav {
@@ -1342,7 +1344,7 @@ Visit `http://localhost:4000`. Expected: top navigation bar with site title, lin
 
 ```bash
 cd /Users/adrianfeng/coding_workspace/hexo-theme-hermes-agent
-git add layout/_partial/nav.ejs layout/_partial/theme-toggle.ejs source/css/_nav.scss
+git add theme/layout/_partial/nav.ejs theme/layout/_partial/theme-toggle.ejs theme/source/css/_nav.scss
 git commit -m "feat(nav): top navigation + theme toggle button"
 ```
 
@@ -1351,10 +1353,10 @@ git commit -m "feat(nav): top navigation + theme toggle button"
 ## Task 11: Theme toggle behavior + light mode CSS
 
 **Files:**
-- Create: `source/js/theme-toggle.js`
-- Modify: `source/css/_theme-light.scss`
+- Create: `theme/source/js/theme-toggle.js`
+- Modify: `theme/source/css/_theme-light.scss`
 
-- [ ] **Step 1: Write `source/js/theme-toggle.js`**
+- [ ] **Step 1: Write `theme/source/js/theme-toggle.js`**
 
 ```js
 const KEY = 'hermesTheme';
@@ -1375,7 +1377,7 @@ document.addEventListener('click', (e) => {
 });
 ```
 
-- [ ] **Step 2: Write `source/css/_theme-light.scss`**
+- [ ] **Step 2: Write `theme/source/css/_theme-light.scss`**
 
 ```scss
 html.light {
@@ -1401,7 +1403,7 @@ Click the ☾ button. Expected: page flips to inverted colors. Reload — prefer
 - [ ] **Step 4: Commit**
 
 ```bash
-git add source/js/theme-toggle.js source/css/_theme-light.scss
+git add theme/source/js/theme-toggle.js theme/source/css/_theme-light.scss
 git commit -m "feat(theme): invert-based light mode with no-invert escape"
 ```
 
@@ -1410,9 +1412,9 @@ git commit -m "feat(theme): invert-based light mode with no-invert escape"
 ## Task 12: Footer
 
 **Files:**
-- Modify: `layout/_partial/footer.ejs`
+- Modify: `theme/layout/_partial/footer.ejs`
 
-- [ ] **Step 1: Write `layout/_partial/footer.ejs`**
+- [ ] **Step 1: Write `theme/layout/_partial/footer.ejs`**
 
 ```ejs
 <footer class="site-footer g-row">
@@ -1433,7 +1435,7 @@ git commit -m "feat(theme): invert-based light mode with no-invert escape"
 </footer>
 ```
 
-- [ ] **Step 2: Append footer styles to `source/css/_nav.scss`** (same file since both are chrome)
+- [ ] **Step 2: Append footer styles to `theme/source/css/_nav.scss`** (same file since both are chrome)
 
 ```scss
 .site-footer {
@@ -1459,7 +1461,7 @@ git commit -m "feat(theme): invert-based light mode with no-invert escape"
 - [ ] **Step 3: Commit**
 
 ```bash
-git add layout/_partial/footer.ejs source/css/_nav.scss
+git add theme/layout/_partial/footer.ejs theme/source/css/_nav.scss
 git commit -m "feat(footer): 3-column footer"
 ```
 
@@ -1468,10 +1470,10 @@ git commit -m "feat(footer): 3-column footer"
 ## Task 13: Post meta helper + partial
 
 **Files:**
-- Create: `scripts/hermes-helpers.js`
-- Create: `layout/_partial/post-meta.ejs`
+- Create: `theme/scripts/hermes-helpers.js`
+- Create: `theme/layout/_partial/post-meta.ejs`
 
-- [ ] **Step 1: Write `scripts/hermes-helpers.js`**
+- [ ] **Step 1: Write `theme/scripts/hermes-helpers.js`**
 
 ```js
 'use strict';
@@ -1528,7 +1530,7 @@ hexo.extend.filter.register('after_render:html', function (html, data) {
 });
 ```
 
-- [ ] **Step 2: Write `layout/_partial/post-meta.ejs`**
+- [ ] **Step 2: Write `theme/layout/_partial/post-meta.ejs`**
 
 ```ejs
 <div class="post-meta">
@@ -1549,14 +1551,14 @@ hexo.extend.filter.register('after_render:html', function (html, data) {
 </div>
 ```
 
-- [ ] **Step 3: Register `scripts/` with Hexo** — no action needed; Hexo auto-loads anything in `scripts/` of the theme directory.
+- [ ] **Step 3: Register `theme/scripts/` with Hexo** — no action needed; Hexo auto-loads anything in `scripts/` of the theme directory.
 
 - [ ] **Step 4: Smoke test** — `hexo g` in fixture. Expected: no errors. Direct verification in browser after Task 14.
 
 - [ ] **Step 5: Commit**
 
 ```bash
-git add scripts/ layout/_partial/post-meta.ejs
+git add theme/scripts/ theme/layout/_partial/post-meta.ejs
 git commit -m "feat(post): meta helper + terminal-style meta partial"
 ```
 
@@ -1565,10 +1567,10 @@ git commit -m "feat(post): meta helper + terminal-style meta partial"
 ## Task 14: Post page
 
 **Files:**
-- Create: `layout/post.ejs`
-- Modify: `source/css/_post.scss`
+- Create: `theme/layout/post.ejs`
+- Modify: `theme/source/css/_post.scss`
 
-- [ ] **Step 1: Write `layout/post.ejs`**
+- [ ] **Step 1: Write `theme/layout/post.ejs`**
 
 ```ejs
 <article class="post">
@@ -1617,7 +1619,7 @@ git commit -m "feat(post): meta helper + terminal-style meta partial"
 </article>
 ```
 
-- [ ] **Step 2: Write `source/css/_post.scss`**
+- [ ] **Step 2: Write `theme/source/css/_post.scss`**
 
 ```scss
 .post {
@@ -1726,7 +1728,7 @@ Visit `http://localhost:4000/2026/04/27/sample-tech/`. Expected: title, meta lin
 
 ```bash
 cd /Users/adrianfeng/coding_workspace/hexo-theme-hermes-agent
-git add layout/post.ejs source/css/_post.scss
+git add theme/layout/post.ejs theme/source/css/_post.scss
 git commit -m "feat(post): post page layout with meta, TOC, prev/next, EOF marker"
 ```
 
@@ -1735,12 +1737,12 @@ git commit -m "feat(post): post page layout with meta, TOC, prev/next, EOF marke
 ## Task 15: Code block COPY button
 
 **Files:**
-- Modify: `source/js/code-copy.js`
-- Modify: `source/css/_code.scss`
+- Modify: `theme/source/js/code-copy.js`
+- Modify: `theme/source/css/_code.scss`
 
 The `after_render:html` filter from Task 13 already wraps `<pre>` with markup. Now wire the button and style it.
 
-- [ ] **Step 1: Write `source/js/code-copy.js`**
+- [ ] **Step 1: Write `theme/source/js/code-copy.js`**
 
 ```js
 async function copyText(text) {
@@ -1777,7 +1779,7 @@ document.addEventListener('click', async (e) => {
 });
 ```
 
-- [ ] **Step 2: Write `source/css/_code.scss`**
+- [ ] **Step 2: Write `theme/source/css/_code.scss`**
 
 ```scss
 .code-block {
@@ -1845,7 +1847,7 @@ Expected: code blocks have a top bar showing `BASH · COPY`. Click COPY — text
 - [ ] **Step 4: Commit**
 
 ```bash
-git add source/js/code-copy.js source/css/_code.scss
+git add theme/source/js/code-copy.js theme/source/css/_code.scss
 git commit -m "feat(code): COPY button + Prism token overrides"
 ```
 
@@ -1854,10 +1856,10 @@ git commit -m "feat(code): COPY button + Prism token overrides"
 ## Task 16: TOC partial + highlight script
 
 **Files:**
-- Create: `layout/_partial/toc.ejs`
-- Modify: `source/js/toc-highlight.js`
+- Create: `theme/layout/_partial/toc.ejs`
+- Modify: `theme/source/js/toc-highlight.js`
 
-- [ ] **Step 1: Write `layout/_partial/toc.ejs`**
+- [ ] **Step 1: Write `theme/layout/_partial/toc.ejs`**
 
 ```ejs
 <div class="toc" data-toc>
@@ -1868,7 +1870,7 @@ git commit -m "feat(code): COPY button + Prism token overrides"
 </div>
 ```
 
-- [ ] **Step 2: Add TOC styling to `source/css/_post.scss`** (append at the end)
+- [ ] **Step 2: Add TOC styling to `theme/source/css/_post.scss`** (append at the end)
 
 ```scss
 .toc { line-height: 1.9; }
@@ -1901,7 +1903,7 @@ git commit -m "feat(code): COPY button + Prism token overrides"
 }
 ```
 
-- [ ] **Step 3: Write `source/js/toc-highlight.js`**
+- [ ] **Step 3: Write `theme/source/js/toc-highlight.js`**
 
 ```js
 const toc = document.querySelector('[data-toc]');
@@ -1949,7 +1951,7 @@ Open `sample-tech` post, scroll. Expected: TOC item highlights as you reach each
 - [ ] **Step 5: Commit**
 
 ```bash
-git add layout/_partial/toc.ejs source/js/toc-highlight.js source/css/_post.scss
+git add theme/layout/_partial/toc.ejs theme/source/js/toc-highlight.js theme/source/css/_post.scss
 git commit -m "feat(toc): sticky TOC with scroll-based highlighting"
 ```
 
@@ -1958,13 +1960,13 @@ git commit -m "feat(toc): sticky TOC with scroll-based highlighting"
 ## Task 17: Homepage
 
 **Files:**
-- Create: `layout/index.ejs`
-- Create: `source/css/_home.scss`
-- Modify: `source/css/main.scss` (add `@use "home";`)
+- Create: `theme/layout/index.ejs`
+- Create: `theme/source/css/_home.scss`
+- Modify: `theme/source/css/main.scss` (add `@use "home";`)
 
-- [ ] **Step 1: Add `@use "home";` to `source/css/main.scss`** after `@use "post";`
+- [ ] **Step 1: Add `@use "home";` to `theme/source/css/main.scss`** after `@use "post";`
 
-- [ ] **Step 2: Create `source/css/_home.scss`**
+- [ ] **Step 2: Create `theme/source/css/_home.scss`**
 
 ```scss
 .home {
@@ -2099,7 +2101,7 @@ git commit -m "feat(toc): sticky TOC with scroll-based highlighting"
 .home__grid-more:hover { color: var(--foreground); }
 ```
 
-- [ ] **Step 3: Write `layout/index.ejs`**
+- [ ] **Step 3: Write `theme/layout/index.ejs`**
 
 ```ejs
 <section class="home">
@@ -2164,7 +2166,7 @@ Visit `http://localhost:4000/`. Expected: site title hero, featured post card (s
 - [ ] **Step 5: Commit**
 
 ```bash
-git add layout/index.ejs source/css/_home.scss source/css/main.scss
+git add theme/layout/index.ejs theme/source/css/_home.scss theme/source/css/main.scss
 git commit -m "feat(home): layout C — mini hero + featured + grid"
 ```
 
@@ -2173,10 +2175,10 @@ git commit -m "feat(home): layout C — mini hero + featured + grid"
 ## Task 18: Archive page
 
 **Files:**
-- Create: `layout/archive.ejs`
-- Modify: `source/css/_archive.scss`
+- Create: `theme/layout/archive.ejs`
+- Modify: `theme/source/css/_archive.scss`
 
-- [ ] **Step 1: Write `source/css/_archive.scss`**
+- [ ] **Step 1: Write `theme/source/css/_archive.scss`**
 
 ```scss
 .archive {
@@ -2239,7 +2241,7 @@ git commit -m "feat(home): layout C — mini hero + featured + grid"
 }
 ```
 
-- [ ] **Step 2: Write `layout/archive.ejs`**
+- [ ] **Step 2: Write `theme/layout/archive.ejs`**
 
 ```ejs
 <section class="archive">
@@ -2284,7 +2286,7 @@ Visit `http://localhost:4000/archives/`. Expected: year grouping with `## 2026 �
 - [ ] **Step 4: Commit**
 
 ```bash
-git add layout/archive.ejs source/css/_archive.scss
+git add theme/layout/archive.ejs theme/source/css/_archive.scss
 git commit -m "feat(archive): year-grouped archive listing"
 ```
 
@@ -2293,10 +2295,10 @@ git commit -m "feat(archive): year-grouped archive listing"
 ## Task 19: Category and Tag pages
 
 **Files:**
-- Create: `layout/category.ejs`
-- Create: `layout/tag.ejs`
+- Create: `theme/layout/category.ejs`
+- Create: `theme/layout/tag.ejs`
 
-- [ ] **Step 1: Write `layout/category.ejs`**
+- [ ] **Step 1: Write `theme/layout/category.ejs`**
 
 ```ejs
 <section class="archive">
@@ -2334,7 +2336,7 @@ git commit -m "feat(archive): year-grouped archive listing"
 </section>
 ```
 
-- [ ] **Step 2: Write `layout/tag.ejs`** (identical shape, tag-scoped)
+- [ ] **Step 2: Write `theme/layout/tag.ejs`** (identical shape, tag-scoped)
 
 ```ejs
 <section class="archive">
@@ -2363,7 +2365,7 @@ git commit -m "feat(archive): year-grouped archive listing"
 </section>
 ```
 
-- [ ] **Step 3: Append tag-cloud styles to `source/css/_archive.scss`**
+- [ ] **Step 3: Append tag-cloud styles to `theme/source/css/_archive.scss`**
 
 ```scss
 .tag-cloud {
@@ -2397,7 +2399,7 @@ Visit `/categories/`, `/tags/`, then click into a single tag like `/tags/tech/`.
 - [ ] **Step 5: Commit**
 
 ```bash
-git add layout/category.ejs layout/tag.ejs source/css/_archive.scss
+git add theme/layout/category.ejs theme/layout/tag.ejs theme/source/css/_archive.scss
 git commit -m "feat(archive): category and tag pages + tag cloud"
 ```
 
@@ -2406,12 +2408,12 @@ git commit -m "feat(archive): category and tag pages + tag cloud"
 ## Task 20: About page + generic page layout
 
 **Files:**
-- Create: `layout/page.ejs`
-- Create: `layout/about.ejs`
+- Create: `theme/layout/page.ejs`
+- Create: `theme/layout/about.ejs`
 
-Hexo resolves `layout: <name>` in front-matter by loading `layout/<name>.ejs`. When the fixture's `about/index.md` has `layout: about`, Hexo will render it through `layout/about.ejs`. `layout/page.ejs` handles everything else (`layout: page` or default pages).
+Hexo resolves `layout: <name>` in front-matter by loading `layout/<name>.ejs`. When the fixture's `about/index.md` has `layout: about`, Hexo will render it through `theme/layout/about.ejs`. `theme/layout/page.ejs` handles everything else (`layout: page` or default pages).
 
-- [ ] **Step 1: Write `layout/page.ejs`** (generic custom page)
+- [ ] **Step 1: Write `theme/layout/page.ejs`** (generic custom page)
 
 ```ejs
 <article class="page post">
@@ -2420,7 +2422,7 @@ Hexo resolves `layout: <name>` in front-matter by loading `layout/<name>.ejs`. W
 </article>
 ```
 
-- [ ] **Step 2: Write `layout/about.ejs`**
+- [ ] **Step 2: Write `theme/layout/about.ejs`**
 
 ```ejs
 <section class="about">
@@ -2452,7 +2454,7 @@ Hexo resolves `layout: <name>` in front-matter by loading `layout/<name>.ejs`. W
 </section>
 ```
 
-- [ ] **Step 2: Append about styles to `source/css/_post.scss`**
+- [ ] **Step 2: Append about styles to `theme/source/css/_post.scss`**
 
 ```scss
 .about {
@@ -2483,7 +2485,7 @@ Visit `/about/`. Expected: 2-column grid with each `$ whoami`, `$ ls ~/projects`
 - [ ] **Step 4: Commit**
 
 ```bash
-git add layout/page.ejs layout/about.ejs source/css/_post.scss
+git add theme/layout/page.ejs theme/layout/about.ejs theme/source/css/_post.scss
 git commit -m "feat(page): about page with grid-cell per H2 section"
 ```
 
@@ -2492,11 +2494,11 @@ git commit -m "feat(page): about page with grid-cell per H2 section"
 ## Task 21: 404 page
 
 **Files:**
-- Create: `layout/404.ejs`
-- Create: `source/404.md` (stub that Hexo will render with the 404 layout)
-- Append CSS to `source/css/_post.scss`
+- Create: `theme/layout/404.ejs`
+- Create: `theme/source/404.md` (stub that Hexo will render with the 404 layout)
+- Append CSS to `theme/source/css/_post.scss`
 
-- [ ] **Step 1: Create `source/404.md`**
+- [ ] **Step 1: Create `theme/source/404.md`**
 
 Hexo will render this through the layout system. Set the front-matter to use the `404` layout.
 
@@ -2507,7 +2509,7 @@ layout: "404"
 ---
 ```
 
-- [ ] **Step 2: Write `layout/404.ejs`**
+- [ ] **Step 2: Write `theme/layout/404.ejs`**
 
 ```ejs
 <section class="fourohfour">
@@ -2532,7 +2534,7 @@ layout: "404"
 </script>
 ```
 
-- [ ] **Step 3: Append 404 styles to `source/css/_post.scss`**
+- [ ] **Step 3: Append 404 styles to `theme/source/css/_post.scss`**
 
 ```scss
 .fourohfour {
@@ -2573,7 +2575,7 @@ Visit `http://localhost:4000/404.html`. Expected: centered terminal layout with 
 - [ ] **Step 5: Commit**
 
 ```bash
-git add layout/404.ejs source/404.md source/css/_post.scss
+git add theme/layout/404.ejs theme/source/404.md theme/source/css/_post.scss
 git commit -m "feat(404): terminal-style 404 page"
 ```
 
@@ -2582,13 +2584,13 @@ git commit -m "feat(404): terminal-style 404 page"
 ## Task 22: Search — modal + client-side filter
 
 **Files:**
-- Modify: `layout/_partial/search-modal.ejs`
-- Modify: `source/js/search.js`
-- Modify: `source/css/_search.scss`
+- Modify: `theme/layout/_partial/search-modal.ejs`
+- Modify: `theme/source/js/search.js`
+- Modify: `theme/source/css/_search.scss`
 
 The fixture blog already has `hexo-generator-search` installed (Task 2). Add config to the theme's `_config.yml` documentation noting site authors must include the generator in their own Hexo site deps (document in README).
 
-- [ ] **Step 1: Write `layout/_partial/search-modal.ejs`**
+- [ ] **Step 1: Write `theme/layout/_partial/search-modal.ejs`**
 
 ```ejs
 <dialog class="search-modal" data-search-modal>
@@ -2609,7 +2611,7 @@ The fixture blog already has `hexo-generator-search` installed (Task 2). Add con
 </dialog>
 ```
 
-- [ ] **Step 2: Write `source/js/search.js`**
+- [ ] **Step 2: Write `theme/source/js/search.js`**
 
 ```js
 const modal = document.querySelector('[data-search-modal]');
@@ -2718,7 +2720,7 @@ if (modal) modal.addEventListener('keydown', (e) => {
 window.__hermesOpenSearch = openModal;
 ```
 
-- [ ] **Step 3: Write `source/css/_search.scss`**
+- [ ] **Step 3: Write `theme/source/css/_search.scss`**
 
 ```scss
 .search-modal {
@@ -2819,7 +2821,7 @@ Click SEARCH in the nav. Expected: modal opens centered. Type a query. Expected:
 - [ ] **Step 5: Commit**
 
 ```bash
-git add layout/_partial/search-modal.ejs source/js/search.js source/css/_search.scss
+git add theme/layout/_partial/search-modal.ejs theme/source/js/search.js theme/source/css/_search.scss
 git commit -m "feat(search): client-side search modal with keyboard nav"
 ```
 
@@ -2828,9 +2830,9 @@ git commit -m "feat(search): client-side search modal with keyboard nav"
 ## Task 23: Keyboard shortcuts
 
 **Files:**
-- Modify: `source/js/keyboard.js`
+- Modify: `theme/source/js/keyboard.js`
 
-- [ ] **Step 1: Write `source/js/keyboard.js`**
+- [ ] **Step 1: Write `theme/source/js/keyboard.js`**
 
 ```js
 // Ignore bindings when user is typing in an input/textarea/contenteditable
@@ -2897,7 +2899,7 @@ document.addEventListener('keydown', (e) => {
 - [ ] **Step 3: Commit**
 
 ```bash
-git add source/js/keyboard.js
+git add theme/source/js/keyboard.js
 git commit -m "feat(keyboard): / t g-chord shortcuts"
 ```
 
@@ -2906,9 +2908,9 @@ git commit -m "feat(keyboard): / t g-chord shortcuts"
 ## Task 24: Responsive breakpoints
 
 **Files:**
-- Modify: `source/css/_responsive.scss`
+- Modify: `theme/source/css/_responsive.scss`
 
-- [ ] **Step 1: Write `source/css/_responsive.scss`**
+- [ ] **Step 1: Write `theme/source/css/_responsive.scss`**
 
 ```scss
 // Tablet: <=1199
@@ -2968,7 +2970,7 @@ git commit -m "feat(keyboard): / t g-chord shortcuts"
 }
 ```
 
-- [ ] **Step 2: Add hamburger menu to `layout/_partial/nav.ejs`**
+- [ ] **Step 2: Add hamburger menu to `theme/layout/_partial/nav.ejs`**
 
 Replace the nav top with a markup that includes a hamburger button visible only on mobile. Edit the `.site-nav__links` section to add a `.is-open` toggle class, and add:
 
@@ -2977,7 +2979,7 @@ Replace the nav top with a markup that includes a hamburger button visible only 
 <button class="site-nav__hamburger" data-nav-toggle aria-label="Menu">≡</button>
 ```
 
-And append to `source/css/_nav.scss`:
+And append to `theme/source/css/_nav.scss`:
 
 ```scss
 .site-nav__hamburger {
@@ -3010,7 +3012,7 @@ And append to `source/css/_nav.scss`:
 }
 ```
 
-- [ ] **Step 3: Wire hamburger toggle — add to `source/js/theme-toggle.js`** (keep in same file — both are nav-adjacent)
+- [ ] **Step 3: Wire hamburger toggle — add to `theme/source/js/theme-toggle.js`** (keep in same file — both are nav-adjacent)
 
 ```js
 document.addEventListener('click', (e) => {
@@ -3031,7 +3033,7 @@ Use browser devtools device emulation:
 - [ ] **Step 5: Commit**
 
 ```bash
-git add source/css/_responsive.scss source/css/_nav.scss layout/_partial/nav.ejs source/js/theme-toggle.js
+git add theme/source/css/_responsive.scss theme/source/css/_nav.scss theme/layout/_partial/nav.ejs theme/source/js/theme-toggle.js
 git commit -m "feat(responsive): tablet + mobile breakpoints, hamburger drawer"
 ```
 
@@ -3040,13 +3042,13 @@ git commit -m "feat(responsive): tablet + mobile breakpoints, hamburger drawer"
 ## Task 25: KaTeX opt-in integration
 
 **Files:**
-- Modify: `_config.yml` (theme defaults)
+- Modify: `theme/_config.yml` (theme defaults)
 
-The KaTeX loader was added to `head.ejs` in Task 9 with per-post gating (`theme.katex.enable && (!theme.katex.per_post || page.math)`). Enabling KaTeX for the fixture blog is a one-line config change.
+The KaTeX loader was added to `theme/layout/_partial/head.ejs` in Task 9 with per-post gating (`theme.katex.enable && (!theme.katex.per_post || page.math)`). Enabling KaTeX for the fixture blog is a one-line config change.
 
 - [ ] **Step 1: Flip `katex.enable` to `true` in the theme's `_config.yml`**
 
-Edit `_config.yml` (the file at the repo root, created in Task 3):
+Edit `theme/_config.yml` (created in Task 3):
 
 ```yaml
 katex:
@@ -3070,7 +3072,7 @@ Open `http://localhost:4000/2026/04/21/sample-ai/`. Expected: inline math render
 - [ ] **Step 4: Commit**
 
 ```bash
-git add _config.yml
+git add theme/_config.yml
 git commit -m "feat(katex): opt-in KaTeX rendering for posts with math:true"
 ```
 
