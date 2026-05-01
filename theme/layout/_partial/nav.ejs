@@ -1,1 +1,24 @@
-<!-- nav.ejs stub -->
+<header class="site-nav">
+  <a class="site-nav__title" href="<%- url_for('/') %>">
+    <% if (theme.site_title) { %>
+      <%= theme.site_title.replace(/\n/g, '<br>') %>
+    <% } else { %>
+      <%= config.title %>
+    <% } %>
+  </a>
+
+  <nav class="site-nav__links">
+    <% (theme.nav || []).forEach(function(item) { %>
+      <a href="<%- item.url ? item.url : url_for(item.path) %>"<% if (item.url) { %> target="_blank" rel="noopener"<% } %>>
+        <%= item.name %>
+      </a>
+    <% }); %>
+  </nav>
+
+  <div class="site-nav__tools">
+    <% if (theme.search && theme.search.enable) { %>
+      <button class="site-nav__search" data-search-open aria-label="Search">SEARCH /</button>
+    <% } %>
+    <%- partial('theme-toggle') %>
+  </div>
+</header>
