@@ -1,10 +1,6 @@
 <header class="site-nav">
   <a class="site-nav__title" href="<%- url_for('/') %>">
-    <% if (theme.site_title) { %>
-      <%= theme.site_title.replace(/\n/g, '<br>') %>
-    <% } else { %>
-      <%= config.title %>
-    <% } %>
+    <span class="site-nav__title-text"><%= theme.site_title || config.title %></span>
   </a>
 
   <nav class="site-nav__links">

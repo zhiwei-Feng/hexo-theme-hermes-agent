@@ -1,6 +1,8 @@
 .site-nav {
   display: grid;
-  grid-template-columns: 200px 1fr auto;
+  // First column: shrink to content (no dead space after short titles).
+  // Capped via max-width on .site-nav__title to guard against very long titles.
+  grid-template-columns: auto 1fr auto;
   align-items: stretch;
   max-width: var(--content-max);
   margin: 0 auto;
@@ -14,6 +16,8 @@
 }
 
 .site-nav__title {
+  display: flex;
+  align-items: center;
   padding: var(--s-4) var(--s-4);
   border-right: 1px solid var(--line);
   font-family: var(--font-display);
@@ -23,6 +27,16 @@
   color: var(--foreground);
   text-transform: uppercase;
   letter-spacing: 1px;
+  max-width: 240px; // cap when user has a long config.title (line-clamp still handles vertical)
+}
+// Line-clamp lives on the inner span so the outer anchor can flex-center.
+// Prefer theme.site_title for a short alias; this is just a visual guard.
+.site-nav__title-text {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  word-break: break-word;
 }
 
 .site-nav__links {
@@ -80,16 +94,12 @@
   text-transform: uppercase;
   color: var(--foreground-dim);
 }
-.site-footer__center { text-align: center; }
-.site-footer__links {
-  text-align: right;
-  a {
-    margin-left: var(--s-4);
-    text-decoration: none;
-    color: var(--foreground-dim);
-    &:hover { color: var(--foreground); }
-  }
+.site-footer__meta a {
+  color: var(--foreground-dim);
+  text-decoration: none;
+  &:hover { color: var(--foreground); }
 }
+.site-footer__legal { text-align: right; }
 
 .site-nav__hamburger {
   display: none;

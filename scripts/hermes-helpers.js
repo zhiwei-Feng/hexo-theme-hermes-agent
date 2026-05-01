@@ -1,5 +1,7 @@
 'use strict';
 
+const THEME_PKG = require('../package.json');
+
 // Word count — Chinese chars count as 1, latin words split by whitespace
 function countWords(text) {
   if (!text) return 0;
@@ -23,6 +25,14 @@ hexo.extend.helper.register('hermes_reading_minutes', function (post) {
   return readingMinutes(countWords(post.content || ''));
 });
 
+hexo.extend.helper.register('hermes_theme_name', function () {
+  return THEME_PKG.name || 'hexo-theme-hermes-agent';
+});
+
+hexo.extend.helper.register('hermes_theme_version', function () {
+  return THEME_PKG.version || '';
+});
+
 hexo.extend.helper.register('format_date_ymd', function (d) {
   const date = new Date(d);
   const y = date.getFullYear();
@@ -35,6 +45,27 @@ hexo.extend.helper.register('post_meta_line', function (post) {
   const url = this.url_for(post.path);
   const slug = post.slug || post.path.replace(/\/$/, '').split('/').pop();
   return `$ cat posts/${slug}.md`;
+});
+
+// Inline markdown for site fields like config.description — users often fill
+// these with markdown out of SEO habit. HTML-escape first, then apply a small
+// set of inline patterns. No block elements, no raw HTML passthrough.
+hexo.extend.helper.register('hermes_md_inline', function (text) {
+  if (!text) return '';
+  const esc = String(text)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+  return esc
+    .replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, '<a href="$2" rel="noopener">$1</a>')
+    .replace(/`([^`]+)`/g, '<code>$1</code>')
+    // Handle bold+italic combos before the plain bold/italic so the inner marks
+    // don't leak through (e.g. `**_Gopher_**` should nest, not render as `_Gopher_` literal).
+    .replace(/\*\*_([^_\n]+)_\*\*/g, '<strong><em>$1</em></strong>')
+    .replace(/_\*\*([^*\n]+)\*\*_/g, '<em><strong>$1</strong></em>')
+    .replace(/\*\*([^*\n]+)\*\*/g, '<strong>$1</strong>')
+    .replace(/(^|[\s(])_([^_\n]+)_(?=[\s).,!?:;]|$)/g, '$1<em>$2</em>');
 });
 
 // Post content filter: replace code blocks with our styled .code-block wrapper.

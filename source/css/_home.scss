@@ -32,6 +32,28 @@
   text-transform: uppercase;
   margin: 0;
 }
+.home__hero-subtitle {
+  font-family: var(--font-mono);
+  font-size: var(--text-meta);
+  letter-spacing: var(--track-ui);
+  color: var(--foreground-dim);
+  text-transform: uppercase;
+  margin: 0 0 var(--s-3);
+}
+.home__hero-description {
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  line-height: 1.55;
+  color: var(--foreground);
+  max-width: 60ch;
+  margin: var(--s-3) 0 0;
+  a { color: var(--foreground); text-decoration: underline; }
+  code {
+    font-family: var(--font-mono);
+    background: var(--surface);
+    padding: 0 0.3em;
+  }
+}
 
 .home__featured {
   display: block;

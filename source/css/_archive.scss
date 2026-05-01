@@ -1,0 +1,159 @@
+.archive {
+  padding: var(--s-8) 0;
+}
+
+.archive__year {
+  font-family: var(--font-mono);
+  font-size: var(--text-h2);
+  letter-spacing: var(--track-ui);
+  text-transform: uppercase;
+  color: var(--foreground);
+  border-left: 2px solid var(--foreground-dim);
+  padding-left: var(--s-3);
+  margin: var(--s-8) 0 var(--s-4);
+}
+.archive__year::before { content: "## "; opacity: 0.7; }
+
+.archive__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border-top: 1px solid var(--line);
+}
+
+.archive__item {
+  display: flex;
+  align-items: baseline;
+  gap: var(--s-3);
+  padding: var(--s-3) 0;
+  border-bottom: 1px dashed var(--line);
+  font-family: var(--font-mono);
+  font-size: var(--text-meta);
+  letter-spacing: var(--track-meta);
+  text-transform: uppercase;
+}
+.archive__date { color: var(--foreground-dim); flex-shrink: 0; }
+.archive__title {
+  color: var(--foreground);
+  text-decoration: none;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  letter-spacing: 1px;
+  flex: 1;
+  text-transform: uppercase;
+}
+.archive__title:hover { color: var(--foreground-dim); }
+.archive__tag { color: var(--foreground-dim); }
+
+.archive__total {
+  margin-top: var(--s-8);
+  padding-top: var(--s-4);
+  border-top: 1px solid var(--line);
+  font-family: var(--font-mono);
+  font-size: var(--text-meta);
+  letter-spacing: var(--track-ui);
+  color: var(--foreground-dim);
+  text-transform: uppercase;
+  text-align: center;
+}
+
+// Inline badges used in post-meta, featured card, and archive rows.
+// Categories wear a /PATH/ shape (hierarchical, loud); tags wear a #hash (flat, quieter).
+.meta-badge {
+  font-family: var(--font-mono);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background 150ms, color 150ms;
+}
+.meta-badge--cat {
+  color: var(--foreground);
+  text-transform: uppercase;
+  letter-spacing: var(--track-meta);
+}
+.meta-badge--cat:hover { color: var(--foreground-dim); }
+.meta-badge--tag {
+  color: var(--foreground-dim);
+  text-transform: none;
+}
+.meta-badge--tag:hover { color: var(--foreground); }
+
+.tag-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--s-2) var(--s-3);
+  padding: var(--s-4) 0;
+}
+.tag-chip {
+  font-family: var(--font-mono);
+  letter-spacing: var(--track-meta);
+  color: var(--foreground);
+  text-decoration: none;
+  padding: var(--s-2) var(--s-3);
+  border: 1px solid var(--line);
+  background: var(--surface);
+  transition: background 200ms, color 200ms;
+  line-height: 1.2;
+}
+.tag-chip__count {
+  color: var(--foreground-dim);
+  font-size: 0.75em;
+}
+.tag-chip:hover {
+  background: var(--foreground-dim);
+  color: var(--background);
+}
+.tag-chip:hover .tag-chip__count { color: var(--background); }
+
+// Categories: terminal-style tree list. Visually distinct from the tag cloud,
+// matches the hierarchical nature of categories (vs. flat tags).
+.category-tree {
+  list-style: none;
+  padding: 0;
+  margin: var(--s-4) 0 0;
+  border-top: 1px solid var(--line);
+}
+.category-tree__item {
+  border-bottom: 1px dashed var(--line);
+}
+.category-tree__link {
+  display: flex;
+  align-items: baseline;
+  gap: var(--s-3);
+  padding: var(--s-3) var(--s-2);
+  text-decoration: none;
+  color: var(--foreground);
+  font-family: var(--font-mono);
+  font-size: var(--text-meta);
+  letter-spacing: var(--track-meta);
+  text-transform: uppercase;
+  transition: background 150ms;
+}
+.category-tree__link:hover {
+  background: var(--surface);
+  color: var(--foreground);
+}
+.category-tree__arrow {
+  color: var(--foreground-dim);
+  flex-shrink: 0;
+}
+.category-tree__name {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  letter-spacing: 1px;
+  flex-shrink: 0;
+}
+.category-tree__trail {
+  color: var(--foreground-dim);
+}
+.category-tree__dots {
+  flex: 1;
+  border-bottom: 1px dotted var(--foreground-dim);
+  opacity: 0.5;
+  transform: translateY(-4px);
+  min-width: var(--s-6);
+}
+.category-tree__count {
+  color: var(--foreground-dim);
+  flex-shrink: 0;
+}

@@ -1,9 +1,4 @@
 node_modules/
-test/node_modules/
-test/public/
-test/db.json
-test/.deploy_git/
-test/_multiconfig.yml
 .superpowers/
 .DS_Store
 *.log

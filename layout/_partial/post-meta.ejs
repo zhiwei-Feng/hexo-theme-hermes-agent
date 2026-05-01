@@ -7,10 +7,10 @@
     · <%= __('post.read_time').replace('{n}', m) %>
     · <%= __('post.word_count').replace('{n}', w) %>
     <% if (page.categories && page.categories.length) { %>
-      · <% page.categories.each(function(c) { %>[<%= c.name.toUpperCase() %>] <% }); %>
+      · <% page.categories.each(function(c) { %><a class="meta-badge meta-badge--cat" href="<%- url_for(c.path) %>">/<%= c.name.toUpperCase() %>/</a> <% }); %>
     <% } %>
     <% if (page.tags && page.tags.length) { %>
-      <% page.tags.each(function(t) { %>[<%= t.name.toUpperCase() %>] <% }); %>
+      · <% page.tags.each(function(t) { %><a class="meta-badge meta-badge--tag" href="<%- url_for(t.path) %>">#<%= t.name %></a> <% }); %>
     <% } %>
   </div>
 </div>

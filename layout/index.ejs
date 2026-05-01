@@ -1,0 +1,65 @@
+<section class="home">
+
+  <div class="home__hero">
+    <h1 class="home__hero-title"><%= config.title %></h1>
+    <% if (config.subtitle) { %>
+      <p class="home__hero-subtitle"><%= config.subtitle %></p>
+    <% } %>
+    <% if (config.description) { %>
+      <p class="home__hero-description"><%- hermes_md_inline(config.description) %></p>
+    <% } %>
+  </div>
+
+  <%
+    // Pick featured post
+    const mode = theme.featured_post || 'latest';
+    let featured = null;
+    const posts = site.posts.sort('-date').toArray();
+    if (mode === 'front_matter') {
+      featured = posts.find(function(p) { return p.featured === true; });
+    }
+    if (!featured) featured = posts[0];
+    const rest = posts.filter(function(p) { return p !== featured; }).slice(0, 19);
+  %>
+
+  <% if (featured) { %>
+    <a class="home__featured" href="<%- url_for(featured.path) %>">
+      <div class="home__featured-label">
+        LATEST
+        <% if (featured.categories && featured.categories.length) { %>
+          · <% featured.categories.each(function(c){ %><span class="meta-badge meta-badge--cat">/<%= c.name.toUpperCase() %>/</span> <% }) %>
+        <% } %>
+      </div>
+      <h2 class="home__featured-title"><%= featured.title %></h2>
+      <%
+        // strip_html + trim before truncating — raw excerpt HTML may contain <a> tags, and
+        // a nested <a> inside the outer card link makes the browser auto-close the outer
+        // link (HTML spec forbids nesting), breaking card layout. Slicing on text is safe.
+        const rawExcerpt = (featured.description || featured.excerpt || featured.content || '').toString();
+        const plain = strip_html(rawExcerpt).replace(/\s+/g, ' ').trim();
+        const excerptText = plain.length > 200 ? plain.slice(0, 200).trimEnd() + '…' : plain;
+      %>
+      <% if (excerptText) { %>
+        <p class="home__featured-excerpt"><%= excerptText %></p>
+      <% } %>
+      <div class="home__featured-date">
+        <%= format_date_ymd(featured.date) %>
+        · <%= __('post.read_time').replace('{n}', hermes_reading_minutes(featured)) %>
+      </div>
+    </a>
+  <% } %>
+
+  <% if (rest.length) { %>
+    <div class="home__grid">
+      <% rest.forEach(function(p, i) { %>
+        <a class="home__grid-item" href="<%- url_for(p.path) %>">
+          <div class="home__grid-number"><%= String(i + 2).padStart(3, '0') %></div>
+          <div class="home__grid-title"><%= p.title %></div>
+          <div class="home__grid-date"><%= format_date_ymd(p.date) %></div>
+        </a>
+      <% }); %>
+      <a class="home__grid-more" href="<%- url_for('/archives/') %>">MORE →</a>
+    </div>
+  <% } %>
+
+</section>

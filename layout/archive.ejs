@@ -18,8 +18,11 @@
           <span class="archive__date"><%= format_date_ymd(p.date) %></span>
           <a class="archive__title" href="<%- url_for(p.path) %>"><%= p.title %></a>
           <span class="archive__tag">
+            <% if (p.categories && p.categories.length) { %>
+              <% p.categories.each(function(c) { %><a class="meta-badge meta-badge--cat" href="<%- url_for(c.path) %>">/<%= c.name.toUpperCase() %>/</a> <% }); %>
+            <% } %>
             <% if (p.tags && p.tags.length) { %>
-              <% p.tags.each(function(t) { %>[<%= t.name.toUpperCase() %>] <% }); %>
+              <% p.tags.each(function(t) { %><a class="meta-badge meta-badge--tag" href="<%- url_for(t.path) %>">#<%= t.name %></a> <% }); %>
             <% } %>
           </span>
         </li>

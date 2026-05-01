@@ -1,0 +1,46 @@
+<section class="archive">
+  <%
+    // If rendering a specific category page, page.category is set.
+    // If rendering the "/categories/" index, iterate site.categories.
+    const isIndex = !page.category;
+  %>
+
+  <% if (isIndex) { %>
+    <h2 class="archive__year"><%= __('nav.categories') %></h2>
+    <ul class="category-tree">
+      <% site.categories.sort('-length').each(function(cat) {
+        // Inline-show the hierarchy ("面试 / 16种代码模式") by splitting cat.path.
+        // category_dir can be customised, so we drop the first segment (the dir)
+        // and the last (leaf), and join what remains as the trail prefix.
+        const segments = cat.path.replace(/\/$/, '').split('/');
+        const trail = segments.slice(1, -1).join(' / ');
+      %>
+        <li class="category-tree__item">
+          <a class="category-tree__link" href="<%- url_for(cat.path) %>">
+            <span class="category-tree__arrow">▸</span>
+            <span class="category-tree__name">
+              <% if (trail) { %><span class="category-tree__trail"><%= trail %> / </span><% } %><%= cat.name %>
+            </span>
+            <span class="category-tree__dots" aria-hidden="true"></span>
+            <span class="category-tree__count"><%= String(cat.length).padStart(3, '0') %></span>
+          </a>
+        </li>
+      <% }); %>
+    </ul>
+  <% } else { %>
+    <h2 class="archive__year"><%= page.category.toUpperCase() %> · <%= __('archive.year_posts').replace('{n}', page.posts.length) %></h2>
+    <ul class="archive__list">
+      <% page.posts.each(function(p) { %>
+        <li class="archive__item">
+          <span class="archive__date"><%= format_date_ymd(p.date) %></span>
+          <a class="archive__title" href="<%- url_for(p.path) %>"><%= p.title %></a>
+          <span class="archive__tag">
+            <% if (p.tags && p.tags.length) { %>
+              <% p.tags.each(function(t) { %><a class="meta-badge meta-badge--tag" href="<%- url_for(t.path) %>">#<%= t.name %></a> <% }); %>
+            <% } %>
+          </span>
+        </li>
+      <% }); %>
+    </ul>
+  <% } %>
+</section>

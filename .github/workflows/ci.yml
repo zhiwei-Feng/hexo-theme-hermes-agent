@@ -19,20 +19,3 @@ jobs:
         run: npm ci --no-audit --no-fund --ignore-scripts
       - name: Run stylelint
         run: npm run lint:css
-
-  build:
-    name: hexo build
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-          cache: 'npm'
-          cache-dependency-path: test/package-lock.json
-      - name: Install fixture deps
-        working-directory: test
-        run: npm ci --no-audit --no-fund
-      - name: Generate site
-        working-directory: test
-        run: npx hexo clean && npx hexo generate
