@@ -1,0 +1,50 @@
+site_title: ""
+tagline: ""
+
+nav:
+  - { name: ARCHIVE, path: /archives/ }
+  - { name: TAGS, path: /tags/ }
+  - { name: ABOUT, path: /about/ }
+
+theme_mode: invert
+
+featured_post: front_matter
+
+fonts:
+  display: young_serif
+  mono: courier_prime
+
+effects:
+  dither: true
+  blink: true
+  arc_border: true
+  bevel: true
+
+search:
+  enable: true
+  shortcut: "/"
+
+comments:
+  enable: false
+  giscus:
+    repo: ""
+    repo_id: ""
+    category_id: ""
+
+katex:
+  enable: false
+  per_post: true
+
+social:
+  github: ""
+  rss: true
+
+palette:
+  background: "#041c1b"
+  surface: "#11332f"
+  background_deep: "#000203"
+  line: "#1a3834"
+  foreground: "#f0e0c0"
+  foreground_dim: "#b0a090"
+  midground: "#384038"
+  accent: "#fb2c36"

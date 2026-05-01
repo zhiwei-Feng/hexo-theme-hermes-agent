@@ -1,0 +1,23 @@
+nav:
+  archive: ARCHIVE
+  tags: TAGS
+  categories: CATEGORIES
+  about: ABOUT
+  search: SEARCH
+  theme_toggle: TOGGLE THEME
+post:
+  read_time: "{n} MIN"
+  word_count: "{n} WORDS"
+  prev: PREV
+  next: NEXT
+  end_of_file: end of file
+  contents: CONTENTS
+archive:
+  total: "TOTAL · {posts} POSTS · {years} YEARS"
+  year_posts: "{n} POSTS"
+search:
+  placeholder: "search posts..."
+  no_results: "no matches"
+error:
+  not_found_title: "ERROR 404: file not found"
+  not_found_hint: "try /archives/ or /"
