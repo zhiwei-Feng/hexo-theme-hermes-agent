@@ -1,0 +1,16 @@
+<div class="post-meta">
+  <div class="post-meta__cmd"><span class="post-meta__prompt">$</span> <%= post_meta_line(page) %></div>
+  <div class="post-meta__stats">
+    <%= format_date_ymd(page.date) %>
+    <% const w = hermes_word_count(page); %>
+    <% const m = hermes_reading_minutes(page); %>
+    · <%= __('post.read_time').replace('{n}', m) %>
+    · <%= __('post.word_count').replace('{n}', w) %>
+    <% if (page.categories && page.categories.length) { %>
+      · <% page.categories.each(function(c) { %>[<%= c.name.toUpperCase() %>] <% }); %>
+    <% } %>
+    <% if (page.tags && page.tags.length) { %>
+      <% page.tags.each(function(t) { %>[<%= t.name.toUpperCase() %>] <% }); %>
+    <% } %>
+  </div>
+</div>
