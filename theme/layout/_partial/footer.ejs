@@ -1,1 +1,16 @@
-<!-- footer.ejs stub -->
+<footer class="site-footer g-row">
+  <div class="site-footer__meta">
+    <%= config.title %> · v<%= (theme.version || '0.1.0') %>
+  </div>
+  <div class="site-footer__center">
+    © <%= new Date().getFullYear() %> <%= config.author || '' %> · MIT
+  </div>
+  <div class="site-footer__links">
+    <% if (theme.social && theme.social.rss) { %>
+      <a href="<%- url_for('/atom.xml') %>">RSS</a>
+    <% } %>
+    <% if (theme.social && theme.social.github) { %>
+      <a href="https://github.com/<%= theme.social.github %>" target="_blank" rel="noopener">GITHUB</a>
+    <% } %>
+  </div>
+</footer>

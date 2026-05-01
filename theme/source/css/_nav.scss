@@ -64,3 +64,22 @@
   padding-left: var(--s-5);
   padding-right: var(--s-5);
 }
+
+.site-footer {
+  margin-top: var(--s-12);
+  font-family: var(--font-mono);
+  font-size: var(--text-meta);
+  letter-spacing: var(--track-meta);
+  text-transform: uppercase;
+  color: var(--foreground-dim);
+}
+.site-footer__center { text-align: center; }
+.site-footer__links {
+  text-align: right;
+  a {
+    margin-left: var(--s-4);
+    text-decoration: none;
+    color: var(--foreground-dim);
+    &:hover { color: var(--foreground); }
+  }
+}
