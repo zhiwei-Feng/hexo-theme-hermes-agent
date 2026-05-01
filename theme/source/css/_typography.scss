@@ -1,0 +1,147 @@
+// Font-face declarations
+@font-face {
+  font-family: "Courier Prime";
+  src: url("/fonts/CourierPrime-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Courier Prime";
+  src: url("/fonts/CourierPrime-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Young Serif";
+  src: url("/fonts/YoungSerif-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Archivo";
+  src: url("/fonts/Archivo-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Archivo";
+  src: url("/fonts/Archivo-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Archivo Narrow";
+  src: url("/fonts/ArchivoNarrow-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+// Prose content typography (article body)
+.post-content {
+  font-family: var(--font-display);
+  font-size: var(--text-body);
+  line-height: 1.75;
+  color: var(--foreground);
+
+  h1 {
+    font-size: var(--text-title);
+    line-height: 1.1;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: var(--s-6) 0 var(--s-3);
+  }
+
+  h2 {
+    font-family: var(--font-mono);
+    font-size: var(--text-h2);
+    text-transform: uppercase;
+    letter-spacing: var(--track-ui);
+    color: var(--foreground);
+    border-left: 2px solid var(--foreground-dim);
+    padding-left: var(--s-3);
+    margin: var(--s-8) 0 var(--s-4);
+  }
+  h2::before { content: "## "; opacity: 0.7; }
+
+  h3 {
+    font-family: var(--font-mono);
+    font-size: var(--text-h3);
+    text-transform: uppercase;
+    letter-spacing: var(--track-meta);
+    color: var(--foreground-dim);
+    margin: var(--s-6) 0 var(--s-3);
+  }
+  h3::before { content: "### "; opacity: 0.7; }
+
+  p { margin: 0 0 var(--s-4); }
+
+  a {
+    color: var(--foreground);
+    text-decoration: underline;
+    text-decoration-color: var(--foreground-dim);
+    &:hover { text-decoration-color: var(--foreground); }
+  }
+
+  blockquote {
+    border-left: 3px solid var(--foreground-dim);
+    padding: var(--s-1) var(--s-4);
+    margin: var(--s-4) 0;
+    color: var(--foreground-dim);
+    font-style: italic;
+  }
+
+  ul, ol { padding-left: var(--s-6); margin: 0 0 var(--s-4); }
+  li { margin-bottom: var(--s-2); }
+
+  code {
+    font-family: var(--font-mono);
+    font-size: 0.875em;
+    background: var(--surface);
+    padding: 2px 6px;
+    border: 1px solid var(--line);
+  }
+  pre code { padding: 0; background: transparent; border: none; }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: var(--s-4) 0;
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+  }
+  th, td {
+    border: 1px solid var(--line);
+    padding: var(--s-2) var(--s-3);
+    text-align: left;
+  }
+  th {
+    background: var(--surface);
+    text-transform: uppercase;
+    letter-spacing: var(--track-meta);
+  }
+
+  hr {
+    border: none;
+    border-top: 1px dashed var(--line);
+    margin: var(--s-8) 0;
+  }
+
+  figure {
+    margin: var(--s-6) 0;
+    img { width: 100%; }
+    figcaption {
+      font-family: var(--font-mono);
+      font-size: var(--text-meta);
+      text-transform: uppercase;
+      letter-spacing: var(--track-meta);
+      color: var(--foreground-dim);
+      margin-top: var(--s-2);
+    }
+  }
+}
