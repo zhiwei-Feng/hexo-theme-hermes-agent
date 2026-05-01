@@ -26,6 +26,8 @@
   letter-spacing: 1px;
   margin: 0 0 var(--s-2);
   font-weight: 400;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .post__subtitle {
@@ -45,11 +47,6 @@
   padding-top: var(--s-6);
 }
 .post__layout > * { min-width: 0; }
-
-.post__title {
-  overflow-wrap: anywhere;
-  word-break: break-word;
-}
 
 .post__toc {
   position: sticky;

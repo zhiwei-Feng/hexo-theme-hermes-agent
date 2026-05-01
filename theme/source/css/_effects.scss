@@ -55,11 +55,14 @@
   );
   background-size: 300% 300%;
   animation: arc-stroke 2.23s linear infinite;
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
   -webkit-mask:
     linear-gradient(#000 0 0) content-box,
     linear-gradient(#000 0 0);
+  mask-composite: exclude;
   -webkit-mask-composite: xor;
-          mask-composite: exclude;
   pointer-events: none;
   z-index: -1;
   opacity: 0;
