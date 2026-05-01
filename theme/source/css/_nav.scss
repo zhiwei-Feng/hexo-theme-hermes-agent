@@ -83,3 +83,32 @@
     &:hover { color: var(--foreground); }
   }
 }
+
+.site-nav__hamburger {
+  display: none;
+  padding: var(--s-3);
+  font-size: 1.25rem;
+  background: transparent;
+  border: none;
+  border-left: 1px solid var(--line);
+  color: var(--foreground);
+}
+
+@media (max-width: 767px) {
+  .site-nav__hamburger { display: block; }
+  .site-nav__links.is-open {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--background);
+    border-bottom: 1px solid var(--line);
+    z-index: 10;
+  }
+  .site-nav__links.is-open a {
+    border-right: none;
+    border-bottom: 1px solid var(--line);
+  }
+}

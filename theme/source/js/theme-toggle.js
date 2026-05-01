@@ -14,3 +14,10 @@ document.addEventListener('click', (e) => {
   if (!btn) return;
   apply(current() === 'light' ? 'dark' : 'light');
 });
+
+document.addEventListener('click', (e) => {
+  const ham = e.target.closest('[data-nav-toggle]');
+  if (!ham) return;
+  const links = document.querySelector('.site-nav__links');
+  if (links) links.classList.toggle('is-open');
+});

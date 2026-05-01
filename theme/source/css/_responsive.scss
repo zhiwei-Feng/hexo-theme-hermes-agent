@@ -1,0 +1,55 @@
+// Tablet: <=1199
+@media (max-width: 1199px) {
+  :root { --toc-width: 0px; }
+  .post__layout { grid-template-columns: 1fr; }
+  .post__toc {
+    position: static;
+    margin-bottom: var(--s-6);
+    max-width: 100%;
+  }
+
+  .home__grid { grid-template-columns: repeat(2, 1fr); }
+
+  .site-nav { grid-template-columns: 160px 1fr auto; }
+}
+
+// Mobile: <=767
+@media (max-width: 767px) {
+  :root {
+    --content-max: 100%;
+    --text-hero: 2rem;
+    --text-title: 1.25rem;
+  }
+
+  .container { padding: 0 var(--s-3); }
+
+  .site-nav {
+    grid-template-columns: 1fr auto;
+  }
+  .site-nav__title { font-size: 0.875rem; padding: var(--s-3); }
+  .site-nav__links {
+    display: none; // replaced by drawer, opened via a hamburger
+  }
+
+  .home__grid { grid-template-columns: 1fr; }
+
+  .post__footer { grid-template-columns: 1fr; }
+
+  .post-content h1, .post__title {
+    letter-spacing: 0.5px;
+  }
+
+  .search-modal {
+    width: 94vw;
+  }
+
+  .about__grid { grid-template-columns: 1fr; }
+}
+
+// Narrow labels — tighten tracking
+@media (max-width: 479px) {
+  :root {
+    --track-ui: 0.075rem;
+    --track-meta: 0.05rem;
+  }
+}
