@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="<%= config.language || 'en' %>">
+<head>
+  <%- partial('_partial/head') %>
+</head>
+<body>
+  <%- partial('_partial/nav') %>
+
+  <main class="container">
+    <%- body %>
+  </main>
+
+  <%- partial('_partial/footer') %>
+
+  <% if (theme.search && theme.search.enable) { %>
+    <%- partial('_partial/search-modal') %>
+  <% } %>
+
+  <script type="module" src="<%- url_for('/js/theme-toggle.js') %>"></script>
+  <script type="module" src="<%- url_for('/js/code-copy.js') %>"></script>
+  <script type="module" src="<%- url_for('/js/toc-highlight.js') %>"></script>
+  <script type="module" src="<%- url_for('/js/keyboard.js') %>"></script>
+  <% if (theme.search && theme.search.enable) { %>
+    <script type="module" src="<%- url_for('/js/search.js') %>"></script>
+  <% } %>
+</body>
+</html>
