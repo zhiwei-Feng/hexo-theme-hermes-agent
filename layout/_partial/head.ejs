@@ -18,13 +18,16 @@
 <meta property="og:url" content="<%- full_url_for(page.path) %>">
 <meta property="og:image" content="<%- full_url_for('/images/og-default.png') %>">
 
-<!-- Theme flash guard: set class synchronously before CSS loads -->
+<!-- Theme flash guard: only apply light if the user has explicitly toggled it.
+     OS-preference auto-trigger was removed because `filter: invert(1)` on <html>
+     corrupts rendering on Mobile Safari (blank page, dead pointer events) for users
+     whose OS defaults to light mode. Light mode is now strictly opt-in via the ☾ button. -->
 <script>
 (function(){
   try {
-    var pref = localStorage.getItem('hermesTheme');
-    var wantLight = pref === 'light' || (!pref && matchMedia('(prefers-color-scheme: light)').matches);
-    if (wantLight) document.documentElement.classList.add('light');
+    if (localStorage.getItem('hermesTheme') === 'light') {
+      document.documentElement.classList.add('light');
+    }
   } catch(e) {}
 })();
 </script>

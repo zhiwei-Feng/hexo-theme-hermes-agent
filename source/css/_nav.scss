@@ -13,6 +13,9 @@
   font-size: var(--text-ui);
   text-transform: uppercase;
   letter-spacing: var(--track-ui);
+  // Anchor for the mobile .site-nav__links.is-open drawer, which uses top:100%.
+  // Without this the drawer's containing block is the ICB and it lands mid-page.
+  position: relative;
 }
 
 .site-nav__title {

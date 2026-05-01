@@ -29,12 +29,22 @@
   .container { padding: 0 var(--s-3); }
 
   .site-nav {
-    grid-template-columns: 1fr auto;
+    // title takes the 1fr remainder; tools + hamburger each get their own auto track
+    // so the hamburger doesn't wrap onto a second row (the links column is display:none)
+    grid-template-columns: 1fr auto auto;
   }
-  .site-nav__title { font-size: 0.875rem; padding: var(--s-3); }
+  .site-nav__title {
+    font-size: 0.875rem;
+    padding: var(--s-3);
+    max-width: none; // desktop's 240px cap would leave dead space in the 1fr track
+  }
   .site-nav__links {
     display: none; // replaced by drawer, opened via a hamburger
   }
+  // Tighten tools cluster so SEARCH + theme-toggle + hamburger fit without overflowing
+  .site-nav__search-label { display: none; } // keep the "/" shortcut hint only
+  .site-nav__tools > * { padding: var(--s-3); }
+  .site-nav__hamburger { padding: var(--s-3); }
 
   .home__grid { grid-template-columns: 1fr; }
 
@@ -84,7 +94,7 @@
   }
   [data-toc].is-open { display: block; }
 
-  // Footer stacks on mobile
+  // Footer stacks on mobile — each cell full width, left-aligned
   .site-footer {
     grid-auto-flow: row;
     grid-auto-columns: 1fr;
@@ -94,8 +104,7 @@
     border-bottom: 1px solid var(--line);
   }
   .site-footer > *:last-child { border-bottom: none; }
-  .site-footer__center { text-align: left; }
-  .site-footer__links { text-align: left; }
+  .site-footer__legal { text-align: left; }
 }
 
 // Narrow labels — tighten tracking
