@@ -1,0 +1,20 @@
+<section class="fourohfour">
+  <div class="fourohfour__screen">
+    <div class="fourohfour__line">
+      <span class="fourohfour__prompt">$</span>
+      cat posts<span data-404-path>%PATH%</span>
+    </div>
+    <div class="fourohfour__line fourohfour__error">
+      <%= __('error.not_found_title') %>
+    </div>
+    <div class="fourohfour__line fourohfour__hint">
+      → <%= __('error.not_found_hint') %>
+    </div>
+    <div class="fourohfour__cursor"><span class="cursor"></span></div>
+  </div>
+</section>
+
+<script>
+  var p = document.querySelector('[data-404-path]');
+  if (p) p.textContent = location.pathname;
+</script>

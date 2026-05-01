@@ -138,3 +138,33 @@
 }
 .about__heading h2::before { content: ""; }
 .about__body { font-size: 0.9375rem; }
+
+.fourohfour {
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--s-8);
+}
+.fourohfour__screen {
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  line-height: 1.9;
+  letter-spacing: var(--track-meta);
+  text-transform: uppercase;
+  color: var(--foreground);
+  max-width: 560px;
+  width: 100%;
+}
+.fourohfour__prompt { color: var(--foreground-dim); margin-right: 4px; }
+.fourohfour__error { color: var(--accent); margin-top: var(--s-4); }
+.fourohfour__hint { color: var(--foreground-dim); }
+.fourohfour__cursor {
+  margin-top: var(--s-6);
+  font-size: 2.5rem;
+  line-height: 1;
+}
+.fourohfour__cursor .cursor {
+  width: 0.8ch;
+  height: 1em;
+}
