@@ -32,7 +32,7 @@ comments:
     category_id: ""
 
 katex:
-  enable: false
+  enable: true
   per_post: true
 
 social:
