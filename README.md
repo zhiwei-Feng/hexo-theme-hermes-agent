@@ -26,6 +26,23 @@ A Hexo theme that brings the Nous Research Hermes Agent terminal aesthetic to st
 
 ## Install
 
+Requires Hexo 7+.
+
+### Via npm (recommended)
+
+```bash
+cd your-hexo-blog
+npm install hexo-theme-hermes-agent
+```
+
+Then set `theme: hermes-agent` in the site's `_config.yml`.
+
+The theme's runtime dependencies (`hexo-renderer-ejs`, `hexo-renderer-sass-next`, `hexo-generator-search`) are installed automatically as transitive dependencies.
+
+### Via git clone
+
+Use this if you want to fork the theme or edit its files directly.
+
 ```bash
 cd your-hexo-blog
 git clone https://github.com/zhiwei-Feng/hexo-theme-hermes-agent themes/hermes-agent
@@ -36,7 +53,20 @@ Then set `theme: hermes-agent` in the site's `_config.yml`.
 
 ## Configuration
 
-All keys belong in `themes/hermes-agent/_config.yml` (or copy them into your site-level theme config block).
+When installed via npm, do **not** edit files under `node_modules/`. Instead, create an **alternate theme config** at your site root:
+
+```
+your-hexo-blog/
+├── _config.yml
+├── _config.hermes-agent.yml   ← create this file; overrides the theme defaults
+└── source/
+```
+
+Hexo merges `_config.<theme-name>.yml` on top of the theme's packaged `_config.yml` automatically (see [Hexo — Alternate Theme Config](https://hexo.io/docs/configuration#Alternate-Theme-Config)).
+
+When installed via git clone, either edit `themes/hermes-agent/_config.yml` directly or use the same `_config.hermes-agent.yml` pattern.
+
+All available keys:
 
 ```yaml
 # Override the display title and tagline shown above the nav.
