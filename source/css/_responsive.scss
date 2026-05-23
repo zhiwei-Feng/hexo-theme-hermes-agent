@@ -26,6 +26,10 @@
     --text-title: 1.25rem;
   }
 
+  // On narrow screens the figure crops to a tight close-up that competes
+  // with body text rather than fading into the chrome — hide it.
+  .portrait-bg { display: none; }
+
   .container { padding: 0 var(--s-3); }
 
   .site-nav {

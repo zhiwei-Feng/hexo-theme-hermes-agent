@@ -4,6 +4,13 @@
   <%- partial('_partial/head') %>
 </head>
 <body>
+  <% const pbg = theme.effects && theme.effects.portrait_bg; %>
+  <% if (pbg && pbg.enable && pbg.image) { %>
+    <div class="portrait-bg" aria-hidden="true" style="--portrait-bg-opacity: <%= pbg.opacity != null ? pbg.opacity : 0.08 %>; --portrait-bg-blend: <%= pbg.blend || 'difference' %>; --portrait-bg-pos: <%= pbg.position || '0% 0%' %>;">
+      <img src="<%- url_for(pbg.image) %>" alt="" class="do-invert" loading="eager" decoding="async">
+    </div>
+  <% } %>
+
   <%- partial('_partial/nav') %>
 
   <main class="container">

@@ -80,6 +80,30 @@
 // No-invert — cancels outer html.light filter on images, code, KaTeX
 .no-invert { filter: invert(1); }
 
+// Portrait-bg — a faint full-bleed illustration sitting above the page
+// surface with mix-blend-mode: difference. Mirrors the Hermes source site's
+// filler-bg layer: a fixed, viewport-cover figure that surfaces as a ghostly
+// presence on the deep-teal ground.
+.portrait-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  opacity: var(--portrait-bg-opacity, 0.05);
+  mix-blend-mode: var(--portrait-bg-blend, difference);
+}
+.portrait-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: var(--portrait-bg-pos, 0% 0%);
+  display: block;
+}
+// Respect users who prefer reduced visual noise.
+@media (prefers-reduced-transparency: reduce) {
+  .portrait-bg { display: none; }
+}
+
 // Honor reduced motion
 @media (prefers-reduced-motion: reduce) {
   .blink, .cursor { animation: none; }

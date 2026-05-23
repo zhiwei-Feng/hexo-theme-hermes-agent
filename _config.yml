@@ -19,6 +19,15 @@ effects:
   blink: true
   arc_border: true
   bevel: true
+  # Faint full-screen background illustration (Piranesi etching, CC0).
+  # Set `enable: false` to remove. `image` is a site-relative URL — point it at
+  # any image in your blog's `source/` to swap (e.g. /images/my-portrait.webp).
+  portrait_bg:
+    enable: true
+    image: /images/portrait-bg.webp
+    opacity: 0.05
+    blend: difference
+    position: "0% 0%"
 
 search:
   enable: true

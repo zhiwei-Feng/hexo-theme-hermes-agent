@@ -102,6 +102,16 @@ effects:
   blink: true       # blinking cursor in terminal-style meta lines
   arc_border: true  # rounded-arc border on the featured card
   bevel: true       # inset bevel shadow on grid panels
+  # Faint full-bleed background illustration (Gustave Doré, public domain —
+  # see source/images/CREDITS.txt). Sits above the page with mix-blend-mode:
+  # difference so it only surfaces on large light/empty regions, like the
+  # human-figure background on the Hermes Agent source site.
+  portrait_bg:
+    enable: true
+    image: /images/portrait-bg.webp   # site-relative; swap by pointing at any image under source/
+    opacity: 0.05                     # 0–1; raise for stronger presence
+    blend: difference                 # any CSS mix-blend-mode keyword
+    position: "0% 0%"                 # CSS object-position, e.g. "right bottom"
 
 # Search modal powered by hexo-generator-search.
 # shortcut: key that opens the modal (default "/").
